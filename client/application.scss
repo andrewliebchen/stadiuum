@@ -6,7 +6,7 @@
 }
 
 .nav-main {
-  @include position(absolute, 0px 0 0px 0px);
+  @include position(fixed, 0px 0 0px 0px);
   width: 5em;
 }
 
@@ -47,5 +47,19 @@
 
 .tab-pane {
   margin-top: 1em;
+}
+
+.pane-1 {
+  display: none;
+
+  .show-pane-1 & {
+    display: block;
+  }
+}
+
+.pane-3 {
+  .show-pane-1 & {
+    display: none;
+  }
 }
 
