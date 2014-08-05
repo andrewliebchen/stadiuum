@@ -11,34 +11,35 @@
         Messages lists of ideas, etc. go here.
       </div>
       <div class="pane pane-2 col-md-5">
-        <div class="panel panel-default">
-          {{> ideaContent}}
-          <div class="list-group">
-            <div class="list-group-item active">
-              <span class="label label-default">#1</span> This is a story. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl.
-            </div>
-            {{> story}}
-            {{> story}}
-            {{> story}}
-            {{> story}}
-            {{> story}}
-            {{> story}}
+        {{> idea}}
+
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            <span class="sr-only">60% Complete</span>
           </div>
-          <footer class="panel-footer">
-            <button type="button" class="btn btn-primary">Add a story</button>
-          </footer>
         </div>
+        <ul>
+          <li>Milestone</li>
+          <li>Total points</li>
+          <li>Velocity</li>
+        </ul>
+
+        {{> story}}
+        {{> story}}
+        {{> story}}
+        {{> story}}
+        {{> story}}
+        {{> story}}
+        <button type="button" class="btn btn-primary">Add a story</button>
       </div>
       <div class="pane pane-3 col-md-7">
         <ul class="nav nav-tabs" role="tablist">
           <li class="active"><a href="#comments" data-toggle="tab" role="tab">Comments</a></li>
           <li><a href="#documents" data-toggle="tab" role="tab">Documents</a></li>
-          <li><a href="#tasks" data-toggle="tab" role="tab">Tasks</a></li>
         </ul>
         <div class="tab-content">
           {{> comments}}
           {{> documents}}
-          {{> tasks}}
         </div>
       </div>
     </div>
@@ -62,18 +63,22 @@
   </nav>
 </template>
 
-<template name="ideaContent">
-  <header class="panel-heading">
-    <strong>#Idea</strong>
-  </header>
-  <div class="panel-body">
-    <p>This is the description of an idea</p>
+<template name="idea">
+  <div class="panel panel-default">
+    <header class="panel-heading">
+      <strong>#Idea</strong>
+    </header>
+    <div class="panel-body">
+      <p>This is the description of an idea</p>
+    </div>
   </div>
 </template>
 
 <template name="story">
-  <div class="list-group-item">
-    <span class="label label-default">#1</span> This is a story. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl.
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <span class="label label-default">#1</span> This is a story. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl.
+    </div>
   </div>
 </template>
 
@@ -117,8 +122,3 @@
   </div>
 </template>
 
-<template name="tasks">
-  <div id="tasks" class="tab-pane">
-    Tasks
-  </div>
-</template>
