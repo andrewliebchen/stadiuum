@@ -1,0 +1,44 @@
+@import "packages/bourbon/bourbon";
+@import "packages/bootstrap3-sass/bootstrap";
+
+.container-fluid {
+  padding: 1em 1em 1em 6em;
+}
+
+.nav-main {
+  @include position(absolute, 0px 0 0px 0px);
+  width: 5em;
+  // background-color: $gray-lighter;
+}
+
+.nav-item {
+  $size: 4em;
+  display: block;
+  width: $size;
+  height: $size;
+  margin: 1em 0 0 1em;
+  border: 1px solid $brand-primary;
+  text-align: center;
+  line-height: $size;
+
+  &.active {
+    background-color: $brand-primary;
+    color: white;
+  }
+}
+
+.nav-group + .nav-group {
+  margin-top: 3em;
+}
+
+.list-group-item.active {
+  background-color: $brand-primary;
+  color: white;
+
+  .label.label-default {
+    background-color: white;
+    color: $brand-primary;
+  }
+}
+
+

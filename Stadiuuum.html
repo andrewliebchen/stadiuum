@@ -1,0 +1,83 @@
+<head>
+  <title>Stadiuuum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav class="nav-main">
+    <div class="nav-group">
+      <a class="nav-item active">Ideas</a>
+      <a class="nav-item">Stories</a>
+    </div>
+    <div class="nav-group">
+      <a class="nav-item">All</a>
+      <a class="nav-item">A</a>
+      <a class="nav-item">B</a>
+      <a class="nav-item">C</a>
+      <a class="nav-item">D</a>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="panel panel-default">
+          <header class="panel-heading">
+            <strong>#Idea</strong>
+          </header>
+          <div class="panel-body">
+            <p>This is the description of an idea</p>
+          </div>
+          <div class="list-group">
+            <div class="list-group-item active">
+              <span class="label label-default">#1</span> This is a story. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl.
+            </div>
+            {{> story}}
+            {{> story}}
+            {{> story}}
+            {{> story}}
+            {{> story}}
+            {{> story}}
+          </div>
+          <footer class="panel-footer">
+            <button type="button" class="btn btn-primary">Add a story</button>
+          </footer>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active"><a href="#">Comments</a></li>
+          <li><a href="#">Documents</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>
+        <div class="media form-group">
+          <img class="media-object img-circle pull-left" src="http://placehold.it/36x36">
+          <div class="media-body">
+            <input type="text" class="form-control" placeholder="Your comment">
+          </div>
+        </div>
+        {{> comment}}
+        {{> comment}}
+        {{> comment}}
+        {{> comment}}
+        {{> comment}}
+        {{> comment}}
+      </div>
+    </div>
+  </div>
+</body>
+
+<template name="story">
+  <div class="list-group-item">
+    <span class="label label-default">#1</span> This is a story. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl.
+  </div>
+</template>
+
+<template name="comment">
+  <div class="media">
+    <img class="media-object img-circle pull-left" src="http://placehold.it/36x36">
+    <div class="media-body">
+      <strong>Jean Luc Picard</strong>
+      <p>Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum.</p>
+    </div>
+  </div>
+</template>
