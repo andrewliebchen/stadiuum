@@ -30,10 +30,12 @@
         <ul class="nav nav-tabs" role="tablist">
           <li class="active"><a href="#comments" data-toggle="tab" role="tab">Comments</a></li>
           <li><a href="#documents" data-toggle="tab" role="tab">Documents</a></li>
+          <li><a href="#tasks" data-toggle="tab" role="tab">Tasks</a></li>
         </ul>
         <div class="tab-content">
           {{> comments}}
           {{> documents}}
+          {{> tasks}}
         </div>
       </div>
     </div>
@@ -53,6 +55,7 @@
       <a class="nav-item">C</a>
       <a class="nav-item">D</a>
     </div>
+    <a class="nav-item current-user">U</a>
   </nav>
 </template>
 
@@ -100,6 +103,19 @@
 
 <template name="documents">
   <div id="documents" class="tab-pane">
-    Documents
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        Document navigation and formatting
+      </div>
+    </nav>
+    <div class="document">
+      <p>Document content</p>
+    </div>
+  </div>
+</template>
+
+<template name="tasks">
+  <div id="tasks" class="tab-pane">
+    Tasks
   </div>
 </template>

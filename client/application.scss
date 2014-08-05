@@ -2,7 +2,7 @@
 @import "packages/bootstrap3-sass/bootstrap";
 
 .container-fluid {
-  padding: 1em 1em 1em 6em;
+  padding: 1em 1em 1em 7em;
 }
 
 .nav-main {
@@ -24,6 +24,10 @@
   &.active {
     background-color: $brand-primary;
     color: white;
+  }
+
+  &.current-user {
+    @include position(absolute, 0 0 1em 0);
   }
 }
 
