@@ -8,18 +8,18 @@
 .nav-main {
   @include position(absolute, 0px 0 0px 0px);
   width: 5em;
-  // background-color: $gray-lighter;
 }
 
 .nav-item {
   $size: 4em;
-  display: block;
-  width: $size;
-  height: $size;
-  margin: 1em 0 0 1em;
+  border-radius: 3px;
   border: 1px solid $brand-primary;
-  text-align: center;
+  display: block;
+  height: $size;
   line-height: $size;
+  margin: 1em 0 0 1em;
+  text-align: center;
+  width: $size;
 
   &.active {
     background-color: $brand-primary;
@@ -41,4 +41,7 @@
   }
 }
 
+.tab-pane {
+  margin-top: 1em;
+}
 
