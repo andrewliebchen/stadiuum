@@ -59,7 +59,14 @@
       <a class="nav-item">C</a>
       <a class="nav-item">D</a>
     </div>
-    <a class="nav-item current-user">U</a>
+    <div class="current-user dropdown">
+      <a class="nav-item" data-toggle="dropdown" href="#">
+        {{> currentUserAvatar}}
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li role="presentation">{{> loginButtons}}</li>
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -84,11 +91,8 @@
 
 <template name="comments">
   <div id="comments" class="tab-pane active">
-    <div class="media form-group">
-      <img class="media-object img-circle pull-left" src="http://placehold.it/36x36">
-      <div class="media-body">
-        <input type="text" class="form-control" placeholder="Your comment">
-      </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Your comment">
     </div>
     {{> comment}}
     {{> comment}}
@@ -101,7 +105,7 @@
 
 <template name="comment">
   <div class="media">
-    <img class="media-object img-circle pull-left" src="http://placehold.it/36x36">
+    <img class="media-object img-rounded pull-left" src="http://placehold.it/36x36">
     <div class="media-body">
       <strong>Jean Luc Picard</strong>
       <p>Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum.</p>
@@ -120,5 +124,9 @@
       <p>Document content</p>
     </div>
   </div>
+</template>
+
+<template name="currentUserAvatar">
+  <img src="{{url}}" class="avatar">
 </template>
 

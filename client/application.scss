@@ -8,6 +8,7 @@
 .nav-main {
   @include position(fixed, 0px 0 0px 0px);
   width: 5em;
+  z-index: 99;
 }
 
 .nav-item {
@@ -20,14 +21,27 @@
   margin: 1em 0 0 1em;
   text-align: center;
   width: $size;
+  overflow: hidden;
 
   &.active {
     background-color: $brand-primary;
     color: white;
   }
 
-  &.current-user {
-    @include position(absolute, 0 0 1em 0);
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.current-user {
+  @include position(absolute, 0 0 1em 0);
+
+  .dropdown-menu {
+    top: auto;
+    bottom: 0;
+    left: 100%;
+    margin-left: 1em;
   }
 }
 
