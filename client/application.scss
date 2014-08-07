@@ -53,6 +53,7 @@
   $height: 4em;
   height: $height;
   line-height: $height;
+  margin-bottom: 1em;
 }
 
 .tab-pane {
@@ -70,6 +71,26 @@
 .pane-3 {
   .show-pane-1 & {
     display: none;
+  }
+}
+
+.new-story {
+  .new-story-form {
+    display: none;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  &.is-adding {
+    .btn-default.is-adding {
+      display: none;
+    }
+
+    .new-story-form {
+      display: block;
+    }
   }
 }
 
