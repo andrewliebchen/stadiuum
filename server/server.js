@@ -1,7 +1,6 @@
-Meteor.startup(function () {
-  // code to run on server at startup
-});
+Meteor.methods({
 
+});
 
 // Create a profile for new users
 Accounts.onCreateUser(function(options, user) {
