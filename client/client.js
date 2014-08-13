@@ -23,7 +23,7 @@ Template.mainNav.events({
 });
 
 Template.ideaDetails.events({
-  'click .mrt_new-story' : function(event) {
+  'click .mrt_toggle-add-story' : function(event) {
     return Session.set('addingStory', true);
   }
 });
