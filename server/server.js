@@ -1,5 +1,10 @@
 Meteor.methods({
-
+  addStory : function(options) {
+    Stories.insert({
+      title: options.title,
+      time:  options.time
+    });
+  },
 });
 
 // Create a profile for new users

@@ -1,32 +1,35 @@
 @import "packages/bourbon/bourbon";
 @import "packages/bootstrap3-sass/bootstrap";
 
-.container-fluid {
-  padding: 1em 1em 1em 7em;
+body {
+  font-size: 16px;
 }
 
-.nav-main {
-  @include position(fixed, 0px 0 0px 0px);
-  width: 5em;
-  z-index: 99;
+.stories {
+  list-style: none;
 }
 
-.nav-item {
-  $size: 4em;
-  border-radius: 3px;
-  border: 1px solid $brand-primary;
-  display: block;
-  height: $size;
-  line-height: $size;
-  margin: 1em 0 0 1em;
-  text-align: center;
-  width: $size;
-  overflow: hidden;
+.story {
+  line-height: 3em;
+  margin: 0.5em 0;
+}
 
-  &.active {
-    background-color: $brand-primary;
-    color: white;
-  }
+[class*="story-"] {
+  display: inline-block;
+  padding-right: 0.5em;
+}
+
+.story-priority {
+
+}
+
+.story-loe {
+
+}
+
+.story-assignee {
+
+  @include size(2em, 100%);
 
   img {
     max-width: 100%;
@@ -34,63 +37,15 @@
   }
 }
 
-.current-user {
-  @include position(absolute, 0 0 1em 0);
+.story-title {
 
-  .dropdown-menu {
-    top: auto;
-    bottom: 0;
-    left: 100%;
-    margin-left: 1em;
-  }
 }
 
-.nav-group + .nav-group {
-  margin-top: 3em;
-}
-
-.header {
-  $height: 4em;
-  height: $height;
-  line-height: $height;
-  margin-bottom: 1em;
-}
-
-.tab-pane {
-  margin-top: 1em;
-}
-
-.pane-1 {
+.story-status {
   display: none;
 
-  .show-pane-1 & {
-    display: block;
-  }
-}
-
-.pane-3 {
-  .show-pane-1 & {
-    display: none;
-  }
-}
-
-.new-story {
-  .new-story-form {
-    display: none;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  &.is-adding {
-    .btn-default.is-adding {
-      display: none;
-    }
-
-    .new-story-form {
-      display: block;
-    }
+  .story:hover & {
+    display: inline-block;
   }
 }
 
