@@ -1,17 +1,26 @@
 @import "packages/bourbon/bourbon";
 @import "packages/bootstrap3-sass/bootstrap";
 
+@mixin ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 body {
   font-size: 16px;
 }
 
 .stories {
-  list-style: none;
+
 }
 
 .story {
   line-height: 3em;
   margin: 0.5em 0;
+  overflow: hidden;
+  max-width: 100%;
+  @include ellipsis;
 }
 
 [class*="story-"] {
@@ -28,7 +37,6 @@ body {
 }
 
 .story-assignee {
-
   @include size(2em, 100%);
 
   img {
@@ -38,7 +46,7 @@ body {
 }
 
 .story-title {
-
+  // @include ellipsis;
 }
 
 .story-status {

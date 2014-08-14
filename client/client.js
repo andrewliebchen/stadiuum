@@ -1,8 +1,14 @@
 Session.setDefault('addingStory', false);
 
 Template.stories.story = function() {
-  return Stories.find({});
+  return Stories.find({}, {sort: {'priority': -1}});
 };
+
+Template.storyItem.events({
+  'click .mrt_upvote-story' : function(event, template) {
+    Meteor.call('upvoteStory', this._id);
+  }
+});
 
 Template.newStory.events({
   'click #mrt_addStory' : function(event, template) {

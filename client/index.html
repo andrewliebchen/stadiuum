@@ -10,39 +10,45 @@
 </body>
 
 <template name="stories">
-  <ul class="stories">
+  <div class="stories">
     {{#each story}}
-      <li class="story row">
-        <div class="story-priority">
-          +12<span class="glyphicon glyphicon-thumbs-up"></span>
-        </div>
-        <div class="story-loe">
-          <span class="glyphicon glyphicon-th-large"></span>
-        </div>
-        <a href="#" class="story-assignee">
-          <img class="img-rounded" src="https://en.gravatar.com/userimage/44756173/4ac2b0bb496977138b6dec2ff79dd3c9.png">
-        </a>
-        <div class="story-title">
-          <strong>{{title}}</strong>
-        </div>
-        <a class="story-tag label label-primary">#MVP</a>
-        <a href="#"><span class="story-chat glyphicon glyphicon-comment"></span> 2 current</a>
-        <a class="story__status btn btn-default btn-xs">Start</a>
-      </li>
+      {{> storyItem}}
     {{/each}}
-  </ul>
-  {{> newStory}}
+    {{> newStory}}
+  </div>
 </template>
 
-<template name="story">
-
+<template name="storyItem">
+  <div class="story row">
+    <div class="col-md-12">
+      <button class="story-priority btn btn-default btn-xs mrt_upvote-story">
+        {{priority}}<span class="glyphicon glyphicon-thumbs-up"></span>
+      </button>
+      <div class="story-loe btn btn-default btn-xs">
+        <span class="glyphicon glyphicon-th-large"></span>
+      </div>
+      <div class="story-title">
+        <strong>{{title}}</strong>
+      </div>
+      <a href="#" class="story-assignee">
+        <img class="img-circle" src="https://en.gravatar.com/userimage/44756173/4ac2b0bb496977138b6dec2ff79dd3c9.png">
+      </a>
+      <a class="story-tag label label-primary">#MVP</a>
+      <a href="#"><span class="story-chat glyphicon glyphicon-comment"></span> 2 current</a>
+      <a class="story-status btn btn-default btn-xs">Start</a>
+    </div>
+  </div>
 </template>
 
 <template name="newStory">
-  <div class="form-group">
-    <label class="control-label">Story title</label>
-    <textarea id="mrt_newStoryTitle" class="form-control" rows="3"></textarea>
-    <button type="submit" id="mrt_addStory" class="btn btn-primary">Add story</button>
+  <div class="col-md-12">
+    <div class="form-group">
+      <label class="control-label">Story title</label>
+      <input type="text" id="mrt_newStoryTitle" class="form-control">
+    </div>
+    <div class="form-group">
+      <button type="submit" id="mrt_addStory" class="btn btn-primary">Add story</button>
+    </div>
   </div>
 </template>
 

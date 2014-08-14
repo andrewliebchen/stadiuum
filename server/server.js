@@ -5,6 +5,10 @@ Meteor.methods({
       time:  options.time
     });
   },
+
+  upvoteStory : function(storyId) {
+    Stories.update(storyId, {$inc: {priority: 1}});
+  }
 });
 
 // Create a profile for new users
