@@ -31,9 +31,18 @@
       <button class="story-priority btn btn-default btn-xs mrt_upvote-story">
         {{priority}}<span class="glyphicon glyphicon-thumbs-up"></span>
       </button>
-      <div class="story-loe btn btn-default btn-xs">
-        <span class="glyphicon glyphicon-th-large"></span>
+      <div class="story-loe dropdown">
+        <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-th-large"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><a href="#">1 point</a></li>
+          <li><a href="#">2 points</a></li>
+          <li><a href="#">4 points</a></li>
+          <li><a href="#">8 points</a></li>
+        </ul>
       </div>
+
       <div class="story-title">
         <strong>{{title}}</strong>
       </div>
