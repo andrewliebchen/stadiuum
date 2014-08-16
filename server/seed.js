@@ -1,11 +1,13 @@
 Meteor.startup(function () {
-  // Stories.remove({});
+  Stories.remove({});
 
-  // if(Ideas.find().count() === 0) {
-  //   Ideas.insert({
-  //     tag:  'stories',
-  //     description: 'Users should be able to create implementable stories from ideas. Stories could be displayed with the idea. Progress on the stories should somehow roll up to the idea',
-  //     time:   Date.now()
-  //   });
-  // };
+  if(Stories.find().count() === 0) {
+    Stories.insert({
+      title:      'Nice work, dood!',
+      totalLoe:   0,
+      averageLoe: 0,
+      loeUpdates: 0,
+      time:   Date.now()
+    });
+  };
 });

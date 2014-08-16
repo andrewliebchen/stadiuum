@@ -28,18 +28,19 @@
 <template name="storyItem">
   <div class="story row">
     <div class="col-md-12">
-      <button class="story-priority btn btn-default btn-xs mrt_upvote-story">
+      <button class="story-priority btn btn-default btn-xs mtr_upvote-story">
         {{priority}}<span class="glyphicon glyphicon-thumbs-up"></span>
       </button>
       <div class="story-loe dropdown">
         <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-th-large"></span>
+          {{averageLoe}}
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><a href="#">1 point</a></li>
-          <li><a href="#">2 points</a></li>
-          <li><a href="#">4 points</a></li>
-          <li><a href="#">8 points</a></li>
+          <li><a class="mtr_toggle-loe" data-loe="0">Unestimated</a></li>
+          <li><a class="mtr_toggle-loe" data-loe="1">1 point</a></li>
+          <li><a class="mtr_toggle-loe" data-loe="2">2 points</a></li>
+          <li><a class="mtr_toggle-loe" data-loe="4">4 points</a></li>
+          <li><a class="mtr_toggle-loe" data-loe="8">8 points</a></li>
         </ul>
       </div>
 
@@ -51,7 +52,10 @@
       </a>
       <a class="story-tag label label-primary">#MVP</a>
       <a href="#"><span class="story-chat glyphicon glyphicon-comment"></span> 2 current</a>
-      <a class="story-status btn btn-default btn-xs">Start</a>
+      <div class="story-actions">
+        <a class="btn btn-default">Add to current</a>
+        <a class="btn btn-default btn-success">Start</a>
+      </div>
     </div>
   </div>
 </template>
@@ -66,11 +70,11 @@
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label">Story title</label>
-            <input type="text" id="mrt_newStoryTitle" class="form-control">
+            <input type="text" id="mtr_newStoryTitle" class="form-control">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" id="mrt_addStory" class="btn btn-primary">Add story</button>
+          <button type="submit" id="mtr_addStory" class="btn btn-primary">Add story</button>
         </div>
       </div>
     </div>

@@ -1,12 +1,13 @@
 $brand-primary: #0074D9;
+$brand-success: #2ECC40;
 
 @import "packages/bourbon/bourbon";
 @import "packages/bootstrap3-sass/bootstrap";
 
 @mixin ellipsis {
-  white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 body {
@@ -15,9 +16,9 @@ body {
 
 .header {
   @include clearfix;
-  padding: 1em 0;
   border-bottom: 1px solid $gray-lighter;
   margin-bottom: 1em;
+  padding: 1em 0;
 }
 
 .stories {
@@ -25,14 +26,13 @@ body {
 }
 
 .story {
+  border-radius: 3px;
   line-height: 3em;
   margin: 0.5em 0;
   max-width: 100%;
-  border-radius: 3px;
 
   &:hover {
     color: $brand-primary;
-    background-color: $gray-lighter;
   }
 }
 
@@ -53,18 +53,20 @@ body {
   @include size(2em, 100%);
 
   img {
-    max-width: 100%;
     max-height: 100%;
+    max-width: 100%;
   }
 }
 
 .story-title {
-  // @include ellipsis;
+
 }
 
-.story-status {
-  @include position(absolute, 1em 1em 0 0);
+.story-actions {
+  @include position(absolute, 0px 0px 0 0);
   display: none;
+  @include background-image(linear-gradient(to right, transparent, white 1em));
+  padding-left: 1em;
 
   .story:hover & {
     display: inline-block;

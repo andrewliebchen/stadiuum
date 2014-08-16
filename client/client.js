@@ -9,16 +9,24 @@ Template.storyItem.avatarUrl = function() {
 }
 
 Template.storyItem.events({
-  'click .mrt_upvote-story' : function(event, template) {
+  'click .mtr_upvote-story' : function(event, template) {
     Meteor.call('upvoteStory', this._id);
+  },
+
+  'click .mtr_toggle-loe' : function(event, template) {
+    var story = Stories.findOne(this._id); // Does this get fixed with subscribe?
+    var selectedLoe = $(event.target).data('loe');
+    var averageLoe = (story.totalLoe + selectedLoe) / (story.loeUpdates + 1)
+    Meteor.call('updateLoe', this._id, {
+      selectedLoe: selectedLoe,
+      averageLoe: averageLoe
+    });
   }
 });
 
 Template.newStory.events({
-  'click #mrt_addStory' : function(event, template) {
-    var storyTitle = template.find('#mrt_newStoryTitle');
-    console.log(storyTitle.value);
-
+  'click #mtr_addStory' : function(event, template) {
+    var storyTitle = template.find('#mtr_newStoryTitle');
     var newStory = {
       title: storyTitle.value,
       time:  Date.now()

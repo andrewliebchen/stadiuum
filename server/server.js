@@ -1,13 +1,23 @@
 Meteor.methods({
   addStory : function(options) {
     Stories.insert({
-      title: options.title,
-      time:  options.time
+      title:      options.title,
+      totalLoe:   0,
+      averageLoe: 0,
+      loeUpdates: 0,
+      time:       options.time
     });
   },
 
   upvoteStory : function(storyId) {
     Stories.update(storyId, {$inc: {priority: 1}});
+  },
+
+  updateLoe : function(storyId, args) {
+    Stories.update(storyId, {$inc: {
+      'totalLoe': args.selectedLoe,
+      'loeUpdates': 1
+    }, $set: {'averageLoe': args.averageLoe}});
   }
 });
 
