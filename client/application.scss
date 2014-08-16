@@ -38,7 +38,7 @@ body {
 
 [class*="story-"] {
   display: inline-block;
-  padding-right: 0.5em;
+  margin-right: 3px;
 }
 
 .story-priority {
@@ -63,9 +63,9 @@ body {
 }
 
 .story-actions {
+  @include background-image(linear-gradient(to right, transparent, white 1em));
   @include position(absolute, 0px 0px 0 0);
   display: none;
-  @include background-image(linear-gradient(to right, transparent, white 1em));
   padding-left: 1em;
 
   .story:hover & {

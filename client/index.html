@@ -28,14 +28,14 @@
 <template name="storyItem">
   <div class="story row">
     <div class="col-md-12">
-      <button class="story-priority btn btn-default btn-xs mtr_upvote-story">
+      <button class="story-priority btn btn-default btn-sm mtr_upvote-story">
         {{priority}}<span class="glyphicon glyphicon-thumbs-up"></span>
       </button>
       <div class="story-loe dropdown">
-        <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown">
+        <button type="button" class="btn btn-default btn-sm" data-toggle="dropdown">
           {{averageLoe}}
         </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <ul class="dropdown-menu" role="menu">
           <li><a class="mtr_toggle-loe" data-loe="0">Unestimated</a></li>
           <li><a class="mtr_toggle-loe" data-loe="1">1 point</a></li>
           <li><a class="mtr_toggle-loe" data-loe="2">2 points</a></li>
@@ -43,18 +43,23 @@
           <li><a class="mtr_toggle-loe" data-loe="8">8 points</a></li>
         </ul>
       </div>
-
       <div class="story-title">
         <strong>{{title}}</strong>
       </div>
       <a href="#" class="story-assignee">
         <img class="img-circle" src="{{avatarUrl}}">
       </a>
-      <a class="story-tag label label-primary">#MVP</a>
-      <a href="#"><span class="story-chat glyphicon glyphicon-comment"></span> 2 current</a>
+      <a class="story-tag btn btn-primary btn-sm">MVP</a>
+      <div class="story-chat dropdown">
+        <a class="btn btn-default btn-sm" data-toggle="dropdown"><span class="glyphicon glyphicon-comment"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a>Andrew Liebchen</a></li>
+          <li><a>Chelsea DeSantis</a></li>
+        </ul>
+      </div>
       <div class="story-actions">
-        <a class="btn btn-default">Add to current</a>
-        <a class="btn btn-default btn-success">Start</a>
+        <a class="btn btn-default btn-sm">Add to current</a>
+        <a class="btn btn-success btn-sm">Start</a>
       </div>
     </div>
   </div>
