@@ -33,7 +33,7 @@ body {
 .story-options {
   @include clearfix;
   margin-top: 0.5em;
-  display: none;
+  // display: none;
 
   .story:hover & {
     display: block;
