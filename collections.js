@@ -1,2 +1,2 @@
-Stories   = new Meteor.Collection('stories');
+Stories  = new Meteor.Collection('stories');
 

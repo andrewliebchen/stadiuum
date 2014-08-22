@@ -1,6 +1,7 @@
 Meteor.methods({
   addStory : function(options) {
     Stories.insert({
+      type:       'story',
       title:      options.title,
       totalLoe:   0,
       averageLoe: 0,
@@ -11,6 +12,10 @@ Meteor.methods({
 
   upvoteStory : function(storyId) {
     Stories.update(storyId, {$inc: {priority: 1}});
+  },
+
+  moveStory : function(storyId) {
+    Stories.update(storyId, {$set: {isCurrent: !this.isCurrent}})
   },
 
   updateLoe : function(storyId, args) {
