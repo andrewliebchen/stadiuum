@@ -14,10 +14,6 @@ Meteor.methods({
     Stories.update(storyId, {$inc: {priority: 1}});
   },
 
-  moveStory : function(storyId) {
-    Stories.update(storyId, {$set: {isCurrent: !this.isCurrent}})
-  },
-
   updateLoe : function(storyId, args) {
     Stories.update(storyId, {$inc: {
       'totalLoe': args.selectedLoe,

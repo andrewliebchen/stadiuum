@@ -11,6 +11,9 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newStory">New story</button>
       </div>
     </header>
+    <div class="search">
+      <input type="search" class="form-control" placeholder="Search">
+    </div>
     {{> current}}
     {{> backlog}}
   </div>
@@ -59,7 +62,13 @@
         <button type="button" class="btn btn-default btn-sm">No discussion</button>
       </div>
       <div class="pull-right">
-        <button type="button" class="btn btn-default btn-sm mtr_move-story">Move to current</button>
+        <button type="button" class="btn btn-default btn-sm mtr_move-story">
+          {{#if isCurrent}}
+            Move to backlog
+          {{else}}
+            Move to current
+          {{/if}}
+        </button>
         <button type="button" class="btn btn-primary btn-sm">Start</button>
       </div>
     </div>

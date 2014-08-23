@@ -1,18 +1,17 @@
 Session.setDefault('addingStory', false);
 
+Deps.autorun(function() {
+  Meteor.subscribe('stories');
+});
+
 Template.current.story = function() {
   return Stories.find({isCurrent: true}, {sort: {'priority': -1}});
 };
-
 
 Template.backlog.story = function() {
   return Stories.find({isCurrent: false}, {sort: {'priority': -1}});
 };
 
-
-Template.storyItem.avatarUrl = function() {
-  return Gravatar.imageUrl(Meteor.user().profile.github.email);
-};
 
 Template.storyItem.events({
   'click .mtr_upvote-story' : function() {
@@ -30,7 +29,7 @@ Template.storyItem.events({
   },
 
   'click .mtr_move-story' : function() {
-    Meteor.call('moveStory', this._id);
+    Stories.update(this._id, {$set: {isCurrent: !this.isCurrent}});
   }
 });
 
