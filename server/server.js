@@ -19,6 +19,10 @@ Meteor.methods({
       'totalLoe': args.selectedLoe,
       'loeUpdates': 1
     }, $set: {'averageLoe': args.averageLoe}});
+  },
+
+  startStory : function(storyId) {
+    Stories.update(storyId, {$set: {status: {started: true, notStarted: false}}})
   }
 });
 

@@ -30,6 +30,10 @@ Template.storyItem.events({
 
   'click .mtr_move-story' : function() {
     Stories.update(this._id, {$set: {isCurrent: !this.isCurrent}});
+  },
+
+  'click .mtr_start' : function() {
+    Meteor.call('startStory', this._id);
   }
 });
 

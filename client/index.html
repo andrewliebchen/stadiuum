@@ -69,7 +69,15 @@
             Move to current
           {{/if}}
         </button>
-        <button type="button" class="btn btn-primary btn-sm">Start</button>
+        {{#if status.notStarted}}
+          <button type="button" class="btn btn-primary btn-sm mtr_start">
+            Start
+          </button>
+        {{else}}
+          <button type="button" class="btn btn-danger btn-sm mtr_stop">
+            Stop
+          </button>
+        {{/if}}
       </div>
     </div>
   </li>
@@ -88,6 +96,10 @@
       <li><a class="mtr_toggle-loe" data-loe="8">8 points</a></li>
     </ul>
   </div>
+</template>
+
+<template name="buttonNotStarted">
+
 </template>
 
 <template name="newStory">

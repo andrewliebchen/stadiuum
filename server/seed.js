@@ -9,6 +9,9 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  true,
+      status: {
+        notStarted: true
+      },
       time:   Date.now()
     });
 
@@ -19,6 +22,9 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  false,
+      status: {
+        notStarted: true
+      },
       time:   Date.now()
     });
 
@@ -29,6 +35,9 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  false,
+      status: {
+        notStarted: true
+      },
       time:   Date.now()
     });
 
@@ -39,6 +48,9 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  false,
+      status: {
+        notStarted: true
+      },
       time:   Date.now()
     });
   };
