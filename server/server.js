@@ -10,19 +10,31 @@ Meteor.methods({
     });
   },
 
+  updateStateAt : function(options) {
+    Stories.update(options.id, {$set: {updateStateAt: options.updateStateAt}});
+  },
+
   upvoteStory : function(storyId) {
     Stories.update(storyId, {$inc: {priority: 1}});
   },
 
   updateLoe : function(storyId, args) {
     Stories.update(storyId, {$inc: {
-      'totalLoe': args.selectedLoe,
-      'loeUpdates': 1
-    }, $set: {'averageLoe': args.averageLoe}});
+      totalLoe: args.selectedLoe,
+      loeUpdates: 1
+    }, $set: {averageLoe: args.averageLoe}});
   },
 
   startStory : function(storyId) {
-    Stories.update(storyId, {$set: {status: {started: true, notStarted: false}}});
+    Stories.update(storyId, {$set: {status: {isStarted: true, isNotStarted: false, isStopped: false}}});
+  },
+
+  stopStory : function(storyId) {
+    Stories.update(storyId, {$set: {status: {isStopped: true, isStarted: false}}});
+  },
+
+  finishStory : function(storyId) {
+    Stories.update(storyId, {$set: {status: {isFinished: true, isStarted: false}}});
   }
 });
 

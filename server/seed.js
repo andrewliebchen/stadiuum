@@ -9,10 +9,10 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  true,
+      createdAt:  Date.now(),
       status: {
-        notStarted: true
-      },
-      time:   Date.now()
+        isNotStarted: true
+      }
     });
 
     Stories.insert({
@@ -22,10 +22,10 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  false,
+      createdAt:  Date.now(),
       status: {
-        notStarted: true
-      },
-      time:   Date.now()
+        isNotStarted: true
+      }
     });
 
     Stories.insert({
@@ -35,10 +35,10 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  false,
+      createdAt:  Date.now(),
       status: {
-        notStarted: true
-      },
-      time:   Date.now()
+        isNotStarted: true
+      }
     });
 
     Stories.insert({
@@ -48,10 +48,10 @@ Meteor.startup(function () {
       averageLoe: 0,
       loeUpdates: 0,
       isCurrent:  false,
+      createdAt:  Date.now(),
       status: {
-        notStarted: true
-      },
-      time:   Date.now()
+        isNotStarted: true
+      }
     });
   };
 });

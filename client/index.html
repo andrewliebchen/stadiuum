@@ -69,18 +69,34 @@
             Move to current
           {{/if}}
         </button>
-        {{#if status.notStarted}}
+        {{#if status.isNotStarted}}
           <button type="button" class="btn btn-primary btn-sm mtr_start">
             Start
           </button>
-        {{else}}
-          <button type="button" class="btn btn-danger btn-sm mtr_stop">
+        {{/if}}
+        {{#if status.isStarted}}
+          <button type="button" class="btn btn-default btn-sm mtr_stop">
             Stop
           </button>
+          <button type="button" class="btn btn-primary btn-sm mtr_finish">
+            Done
+          </button>
+        {{/if}}
+        {{#if status.isStopped}}
+          {{> restartButton}}
+        {{/if}}
+        {{#if status.isFinished}}
+          {{> restartButton}}
         {{/if}}
       </div>
     </div>
   </li>
+</template>
+
+<template name="restartButton">
+  <button type="button" class="btn btn-primary btn-sm mtr_start">
+    Restart
+  </button>
 </template>
 
 <template name="storyLoe">

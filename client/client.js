@@ -5,11 +5,11 @@ Deps.autorun(function() {
 });
 
 Template.current.story = function() {
-  return Stories.find({isCurrent: true}, {sort: {'priority': -1}});
+  return Stories.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
 };
 
 Template.backlog.story = function() {
-  return Stories.find({isCurrent: false}, {sort: {'priority': -1}});
+  return Stories.find({isCurrent: false}, {sort: {'priority': -1, 'time': -1}});
 };
 
 
@@ -30,11 +30,23 @@ Template.storyItem.events({
 
   'click .mtr_move-story' : function() {
     Stories.update(this._id, {$set: {isCurrent: !this.isCurrent}});
+    Meteor.call('updateStateAt', {
+      id: this._id,
+      updateStateAt: Date.now()
+    })
   },
 
   'click .mtr_start' : function() {
     Meteor.call('startStory', this._id);
     Stories.update(this._id, {$set: {isCurrent: true}});
+  },
+
+  'click .mtr_stop' : function() {
+    Meteor.call('stopStory', this._id);
+  },
+
+  'click .mtr_finish' : function() {
+    Meteor.call('finishStory', this._id);
   }
 });
 
