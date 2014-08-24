@@ -34,6 +34,7 @@ Template.storyItem.events({
 
   'click .mtr_start' : function() {
     Meteor.call('startStory', this._id);
+    Stories.update(this._id, {$set: {isCurrent: true}});
   }
 });
 

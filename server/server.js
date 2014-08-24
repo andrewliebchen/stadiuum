@@ -22,7 +22,7 @@ Meteor.methods({
   },
 
   startStory : function(storyId) {
-    Stories.update(storyId, {$set: {status: {started: true, notStarted: false}}})
+    Stories.update(storyId, {$set: {status: {started: true, notStarted: false}}});
   }
 });
 
