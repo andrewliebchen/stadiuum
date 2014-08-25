@@ -28,6 +28,10 @@ Template.storyItem.events({
     });
   },
 
+  'click .mtr_add-tag_toggle' : function(event) {
+    $(event.target).closest('.story-tag').addClass('open');
+  },
+
   'click .mtr_move-story' : function() {
     Stories.update(this._id, {$set: {isCurrent: !this.isCurrent}});
     Meteor.call('updateStateAt', {

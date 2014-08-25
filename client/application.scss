@@ -1,6 +1,15 @@
 $brand-primary: #0074D9;
 $brand-success: #2ECC40;
 
+$tag-colors: rgb(109, 149, 255),
+             rgb(127, 91, 242),
+             rgb(255, 103, 107),
+             rgb(255, 205, 103),
+             rgb(0, 164, 255),
+             rgb(149, 149, 147),
+             rgb(0, 98, 151),
+             rgb(36, 197, 96);
+
 @import "packages/bourbon/bourbon";
 @import "packages/bootstrap3-sass/bootstrap";
 
@@ -37,9 +46,55 @@ body {
 .story-options {
   @include clearfix;
   margin-top: 0.5em;
-  // display: none;
 
   .story:hover & {
     display: block;
+  }
+}
+
+.story-tag {
+  display: inline-block;
+  position: relative;
+}
+
+.story-tag__add {
+  @include position(absolute, -10px 0 0 -10px);
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgba(black, 0.15);
+  box-shadow: 0 6px 12px rgba(black, 0.175);
+  display: none;
+  padding: 10px;
+  width: 172px;
+  z-index: 1;
+
+  .open & {
+    display: block;
+  }
+}
+
+@for $i from 1 through length($tag-colors) {
+  .tag-color-#{$i} {
+    background-color: nth($tag-colors, $i);
+  }
+}
+
+// Make this all more programatic
+.tag-swatches {
+  @include clearfix;
+  margin: 0 -5px 15px;
+  padding: 0;
+}
+
+.tag-swatch {
+  @include size(30px, 30px);
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  margin: 5px;
+
+  &:hover {
+    box-shadow: 0 0 0 1px white, 0 0 0 3px $brand-primary;
   }
 }

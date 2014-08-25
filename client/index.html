@@ -60,6 +60,33 @@
         <button type="button" class="btn btn-default btn-sm">Unassigned</button>
         <button type="button" class="btn btn-default btn-sm">0 points</button>
         <button type="button" class="btn btn-default btn-sm">No discussion</button>
+        <div class="story-tag">
+          <button class="btn btn-default btn-sm mtr_add-tag_toggle" type="button">
+            Add a tag
+          </button>
+          <!-- Maybe this should be a small modal, or a GH-style select box -->
+          <div class="story-tag__add">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon">#</div>
+                <input type="text" class="form-control" placeholder="tag_name">
+              </div>
+            </div>
+            <ul class="tag-swatches">
+              <li class="tag-swatch tag-color-1"></li>
+              <li class="tag-swatch tag-color-2"></li>
+              <li class="tag-swatch tag-color-3"></li>
+              <li class="tag-swatch tag-color-4"></li>
+              <li class="tag-swatch tag-color-5"></li>
+              <li class="tag-swatch tag-color-6"></li>
+              <li class="tag-swatch tag-color-7"></li>
+              <li class="tag-swatch tag-color-8"></li>
+            </ul>
+            <button class="btn btn-primary btn-sm btn-block" type="button">
+              Add
+            </button>
+          </div>
+        </div>
       </div>
       <div class="pull-right">
         <button type="button" class="btn btn-default btn-sm mtr_move-story">
