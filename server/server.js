@@ -6,7 +6,7 @@ Meteor.methods({
       totalLoe:   0,
       averageLoe: 0,
       loeUpdates: 0,
-      time:       options.time
+      createdAt:  options.time
     });
   },
 
@@ -35,6 +35,10 @@ Meteor.methods({
 
   finishStory : function(storyId) {
     Stories.update(storyId, {$set: {status: {isFinished: true, isStarted: false}}});
+  },
+
+  addTag : function(storyId, tagContent) {
+    Stories.update(storyId, {$set: {tag: tagContent}});
   }
 });
 

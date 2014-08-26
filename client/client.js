@@ -1,4 +1,5 @@
-Session.setDefault('addingStory', false);
+Session.setDefault('addingStory', null);
+Session.setDefault('addingTag', null);
 
 Deps.autorun(function() {
   Meteor.subscribe('stories');
@@ -9,9 +10,12 @@ Template.current.story = function() {
 };
 
 Template.backlog.story = function() {
-  return Stories.find({isCurrent: false}, {sort: {'priority': -1, 'time': -1}});
+  return Stories.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
 };
 
+Template.storyTag.addingTag = function() {
+  return Session.equals('addingTag', this._id);
+};
 
 Template.storyItem.events({
   'click .mtr_upvote-story' : function() {
@@ -51,6 +55,25 @@ Template.storyItem.events({
 
   'click .mtr_finish' : function() {
     Meteor.call('finishStory', this._id);
+  }
+});
+
+Template.storyTag.events({
+  'click .mtr_toggle-tag' : function(event) {
+    Session.set('addingTag', this._id);
+  },
+
+  'keydown .mtr_add-tag' : function(event) {
+    if (event.which == 13) {
+      var tag = $(event.target);
+      var tagContent = tag.val();
+
+      if(tagContent != '') {
+        Meteor.call('addTag', this._id, tagContent);
+        tag.val('');
+        Session.set('addingTag', null);
+      }
+    }
   }
 });
 
