@@ -10,8 +10,8 @@ $tag-colors: rgb(109, 149, 255),
              rgb(0, 98, 151),
              rgb(36, 197, 96);
 
-@import "packages/bourbon/bourbon";
-@import "packages/bootstrap3-sass/bootstrap";
+@import "packages/andrewliebchen:meteor-bourbon/bourbon";
+// @import "packages/bootstrap3-sass/bootstrap";
 
 @mixin ellipsis {
   overflow: hidden;
@@ -20,7 +20,9 @@ $tag-colors: rgb(109, 149, 255),
 }
 
 body {
+  @include transition;
   font-size: 16px;
+  font-family: $helvetica;
 }
 
 .header {
@@ -34,7 +36,7 @@ body {
 
 .story {
   &:hover {
-    background-color: $gray-lighter;
+    // background-color: $gray-lighter;
   }
 }
 

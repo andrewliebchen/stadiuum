@@ -5,10 +5,10 @@
 
 standard-app-packages
 insecure
-bootstrap3-sass
-scss
+mrt:bootstrap3-sass@3.1.1-5
 jquery
-bourbon
 accounts-github
 accounts-ui
-gravatar
+tmeasday:gravatar@0.0.4
+mrt:bourbon
+fourseven:scss
