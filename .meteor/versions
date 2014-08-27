@@ -3,11 +3,13 @@ accounts-github@1.0.0
 accounts-oauth@1.0.0
 accounts-ui-unstyled@1.0.0
 accounts-ui@1.0.0
+andrewliebchen:meteor-bourbon@0.0.2
 application-configuration@1.0.0
 autoupdate@1.0.4
 binary-heap@1.0.0
 blaze-tools@1.0.0
 blaze@1.0.3
+bootstrap@1.0.0
 callback-hook@1.0.0
 check@1.0.0
 ctl-helper@1.0.2
@@ -33,8 +35,6 @@ meteor@1.0.2
 minifiers@1.0.2
 minimongo@1.0.1
 mongo-livedata@1.0.3
-mrt:bootstrap3-sass@3.1.1-5
-mrt:bourbon@3.1.8
 oauth2@1.0.0
 oauth@1.0.0
 observe-sequence@1.0.1
