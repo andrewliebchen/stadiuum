@@ -55,4 +55,18 @@ Meteor.startup(function () {
       }
     });
   };
+
+  if(Tags.find().count() === 0) {
+    Tags.insert({
+      tagName: 'Good idea'
+    });
+
+    Tags.insert({
+      tagName: 'Great idea'
+    });
+
+    Tags.insert({
+      tagName: 'Greatest idea'
+    });
+  };
 });

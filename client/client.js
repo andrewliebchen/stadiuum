@@ -81,6 +81,12 @@ Template.storyTag.events({
   }
 });
 
+Template.esAutosuggest.events({
+    'click .suggestions li': function (event) {
+        console.log($(event.target).esAutosuggestData());
+    }
+});
+
 Template.newStory.events({
   'click #mtr_addStory' : function(event, template) {
     var storyTitle = template.find('#mtr_newStoryTitle');
