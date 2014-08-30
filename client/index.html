@@ -47,50 +47,54 @@
 </template>
 
 <template name="storyItem">
-  <li class="story list-group-item">
-    <div class="story-title">
-      {{title}}
-    </div>
-    <div class="story-options">
-      <div class="pull-left">
-        <button type="button" class="btn btn-default btn-sm mtr_upvote-story">
-          {{priority}}<span class="glyphicon glyphicon-thumbs-up"></span>
-        </button>
-        <button type="button" class="btn btn-default btn-sm">Unassigned</button>
-        <button type="button" class="btn btn-default btn-sm">0 points</button>
-        <button type="button" class="btn btn-default btn-sm">No discussion</button>
-        {{> storyTag}}
+  {{#unless status.isFinished}}
+    <li class="story list-group-item">
+      <div class="story-title">
+        {{title}}
       </div>
-      <div class="pull-right">
-        <button type="button" class="btn btn-default btn-sm mtr_move-story">
-          {{#if isCurrent}}
-            Move to backlog
-          {{else}}
-            Move to current
+      <div class="story-options">
+        <div class="pull-left">
+          <button type="button" class="btn btn-default btn-sm mtr_upvote-story">
+            {{priority}}<span class="glyphicon glyphicon-thumbs-up"></span>
+          </button>
+          <button type="button" class="btn btn-default btn-sm">Unassigned</button>
+          <button type="button" class="btn btn-default btn-sm">0 points</button>
+          <button type="button" class="btn btn-default btn-sm">No discussion</button>
+          {{> storyTag}}
+        </div>
+        <div class="pull-right">
+          {{#unless status.isStarted}}
+            <button type="button" class="btn btn-default btn-sm mtr_move-story">
+              {{#if isCurrent}}
+                Move to backlog
+              {{else}}
+                Move to current
+              {{/if}}
+            </button>
+          {{/unless}}
+          {{#if status.isNotStarted}}
+            <button type="button" class="btn btn-primary btn-sm mtr_start">
+              Start
+            </button>
           {{/if}}
-        </button>
-        {{#if status.isNotStarted}}
-          <button type="button" class="btn btn-primary btn-sm mtr_start">
-            Start
-          </button>
-        {{/if}}
-        {{#if status.isStarted}}
-          <button type="button" class="btn btn-default btn-sm mtr_stop">
-            Stop
-          </button>
-          <button type="button" class="btn btn-primary btn-sm mtr_finish">
-            Done
-          </button>
-        {{/if}}
-        {{#if status.isStopped}}
-          {{> restartButton}}
-        {{/if}}
-        {{#if status.isFinished}}
-          {{> restartButton}}
-        {{/if}}
+          {{#if status.isStarted}}
+            <button type="button" class="btn btn-danger btn-sm mtr_stop">
+              Stop
+            </button>
+            <button type="button" class="btn btn-primary btn-sm mtr_finish">
+              Done
+            </button>
+          {{/if}}
+          {{#if status.isStopped}}
+            {{> restartButton}}
+          {{/if}}
+          {{#if status.isFinished}}
+            {{> restartButton}}
+          {{/if}}
+        </div>
       </div>
-    </div>
-  </li>
+    </li>
+  {{/unless}}
 </template>
 
 <template name="restartButton">
