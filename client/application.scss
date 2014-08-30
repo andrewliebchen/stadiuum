@@ -19,6 +19,17 @@ $tag-colors: rgb(109, 149, 255),
   white-space: nowrap;
 }
 
+// PACKAGES
+#iron-router-progress {
+  background-color: $brand-primary;
+  box-shadow: none;
+
+  &::before {
+    content: none; // can turn this off somewhere else?
+  }
+}
+
+// APPLICATION
 body {
   @include transition;
   font-size: 16px;

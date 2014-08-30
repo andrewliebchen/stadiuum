@@ -1,0 +1,177 @@
+<template name="application">
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="btn-group pull-left">
+          <button type="button" class="btn btn-default">
+            Ideas
+          </button>
+          <button type="button" class="btn btn-default active">
+            Tasks
+          </button>
+          <button type="button" class="btn btn-default">
+            Circles
+          </button>
+        </div>
+        <div class="pull-right">
+          {{> loginButtons}}
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newStory">New story</button>
+        </div>
+      </header>
+      <div class="search">
+        <input type="search" class="form-control" placeholder="Search">
+      </div>
+      {{> yield}}
+    </div>
+    {{> newStory}}
+  </body>
+</template>
+
+<template name="tasks">
+  {{> current}}
+  {{> backlog}}
+</template>
+
+<template name="loading">
+  Loading
+</template>
+
+
+
+
+<template name="current">
+  <section class="panel panel-default">
+    <header class="panel-heading">
+      Current
+    </header>
+    <ul class="list-group">
+      {{#each story}}
+        {{> storyItem}}
+      {{/each}}
+    </ul>
+  </section>
+</template>
+
+<template name="backlog">
+  <section class="panel panel-default">
+    <header class="panel-heading">
+      Backlog
+    </header>
+    <ul class="list-group">
+      {{#each story}}
+        {{> storyItem}}
+      {{/each}}
+    </ul>
+  </section>
+</template>
+
+<template name="storyItem">
+  {{#unless status.isFinished}}
+    <li class="story list-group-item">
+      <div class="story-title">
+        {{title}}
+      </div>
+      <div class="story-options">
+        <div class="pull-left">
+          <button type="button" class="btn btn-default btn-sm mtr_upvote-story">
+            +{{priority}}
+          </button>
+          <button type="button" class="btn btn-default btn-sm">Unassigned</button>
+          <button type="button" class="btn btn-default btn-sm">0 points</button>
+          <button type="button" class="btn btn-default btn-sm">No discussion</button>
+          {{> storyTag}}
+        </div>
+        <div class="pull-right">
+          {{#unless status.isStarted}}
+            <button type="button" class="btn btn-default btn-sm mtr_move-story">
+              {{#if isCurrent}}
+                Move to backlog
+              {{else}}
+                Move to current
+              {{/if}}
+            </button>
+          {{/unless}}
+          {{#if status.isNotStarted}}
+            <button type="button" class="btn btn-primary btn-sm mtr_start">
+              Start
+            </button>
+          {{/if}}
+          {{#if status.isStarted}}
+            <button type="button" class="btn btn-danger btn-sm mtr_stop">
+              Stop
+            </button>
+            <button type="button" class="btn btn-primary btn-sm mtr_finish">
+              Done
+            </button>
+          {{/if}}
+          {{#if status.isStopped}}
+            {{> restartButton}}
+          {{/if}}
+          {{#if status.isFinished}}
+            {{> restartButton}}
+          {{/if}}
+        </div>
+      </div>
+    </li>
+  {{/unless}}
+</template>
+
+<template name="restartButton">
+  <button type="button" class="btn btn-primary btn-sm mtr_start">
+    Restart
+  </button>
+</template>
+
+<template name="storyLoe">
+  <div class="story-loe dropdown pull-left">
+    <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown">
+      {{averageLoe}} points
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a class="mtr_toggle-loe" data-loe="0">Unestimated</a></li>
+      <li><a class="mtr_toggle-loe" data-loe="1">1 point</a></li>
+      <li><a class="mtr_toggle-loe" data-loe="2">2 points</a></li>
+      <li><a class="mtr_toggle-loe" data-loe="4">4 points</a></li>
+      <li><a class="mtr_toggle-loe" data-loe="8">8 points</a></li>
+    </ul>
+  </div>
+</template>
+
+<template name="storyTag">
+  <div class="story-tag">
+    {{#if tagId}}
+      <button class="btn btn-default btn-sm mtr_toggle-tag" type="button">
+        {{tagName}}
+      </button>
+    {{else}}
+      {{#unless addingTag}}
+        <button class="btn btn-default btn-sm mtr_toggle-tag" type="button">
+          Add a tag
+        </button>
+      {{else}}
+        <input type="text" class="form-control input-sm mtr_add-tag-to-story" placeholder="Add a tag" autofocus>
+      {{/unless}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="newStory">
+  <div class="modal fade" id="newStory" tabindex="-1" role="dialog" aria-labelledby="newStoryLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="newStoryLabel">Add a new story</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="control-label">Story title</label>
+            <input type="text" id="mtr_newStoryTitle" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="mtr_addStory" class="btn btn-primary">Add story</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
