@@ -64,7 +64,7 @@ Template.storyTag.events({
     Session.set('addingTag', this._id);
   },
 
-  'keydown .mtr_add-tag' : function(event) {
+  'keydown .mtr_add-tag-to-story' : function(event) {
     if (event.which == 13) {
       var tag = $(event.target);
       var tagContent = {
@@ -73,7 +73,7 @@ Template.storyTag.events({
       };
 
       if(tagContent != '') {
-        Meteor.call('addTag', tagContent);
+        Meteor.call('addTagToStory', tagContent);
         tag.val('');
         Session.set('addingTag', null);
       }
