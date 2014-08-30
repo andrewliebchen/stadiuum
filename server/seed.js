@@ -1,5 +1,6 @@
 Meteor.startup(function () {
   Stories.remove({});
+  Tags.remove({});
 
   if(Stories.find().count() === 0) {
     Stories.insert({

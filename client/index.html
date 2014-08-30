@@ -55,7 +55,7 @@
       <div class="story-options">
         <div class="pull-left">
           <button type="button" class="btn btn-default btn-sm mtr_upvote-story">
-            {{priority}}<span class="glyphicon glyphicon-thumbs-up"></span>
+            +{{priority}}
           </button>
           <button type="button" class="btn btn-default btn-sm">Unassigned</button>
           <button type="button" class="btn btn-default btn-sm">0 points</button>
@@ -120,9 +120,9 @@
 
 <template name="storyTag">
   <div class="story-tag">
-    {{#if tag}}
+    {{#if tagId}}
       <button class="btn btn-default btn-sm mtr_toggle-tag" type="button">
-        {{tag}}
+        {{tagName}}
       </button>
     {{else}}
       {{#unless addingTag}}

@@ -3,6 +3,7 @@ Session.setDefault('addingTag', null);
 
 Deps.autorun(function() {
   Meteor.subscribe('stories');
+  Meteor.subscribe('tags');
 });
 
 Template.current.story = function() {
@@ -66,10 +67,13 @@ Template.storyTag.events({
   'keydown .mtr_add-tag' : function(event) {
     if (event.which == 13) {
       var tag = $(event.target);
-      var tagContent = tag.val();
+      var tagContent = {
+        tagName: tag.val(),
+        storyId: this._id
+      };
 
       if(tagContent != '') {
-        Meteor.call('addTag', this._id, tagContent);
+        Meteor.call('addTag', tagContent);
         tag.val('');
         Session.set('addingTag', null);
       }
@@ -86,11 +90,7 @@ Template.newStory.events({
     };
 
     if(storyTitle.value != '') {
-      Meteor.call('addStory', newStory, function(error, id) {
-        if(error) {
-          console.log(error);
-        }
-      });
+      Meteor.call('addStory', newStory);
       storyTitle.value = '';
     }
   }

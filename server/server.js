@@ -37,8 +37,12 @@ Meteor.methods({
     Stories.update(storyId, {$set: {status: {isFinished: true, isStarted: false}}});
   },
 
-  addTag : function(storyId, tagContent) {
-    Stories.update(storyId, {$set: {tag: tagContent}});
+  addTag : function(tagContent) {
+    var newTagId = Tags.insert({
+      tag: tagContent.tagName,
+      storyId: tagContent.storyId
+    });
+    Stories.update(tagContent.storyId, {$set: {tagName: tagContent.tagName, tagId: newTagId}});
   }
 });
 
