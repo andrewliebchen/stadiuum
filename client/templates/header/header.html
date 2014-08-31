@@ -1,0 +1,19 @@
+<template name="header">
+  <header class="header">
+    <div class="btn-group pull-left">
+      <button type="button" class="btn btn-default">
+        Ideas
+      </button>
+      <button type="button" class="btn btn-default active">
+        Tasks
+      </button>
+      <button type="button" class="btn btn-default">
+        Circles
+      </button>
+    </div>
+    <div class="pull-right">
+      {{> loginButtons}}
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newStory">New story</button>
+    </div>
+  </header>
+</template>
