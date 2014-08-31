@@ -1,6 +1,6 @@
 Router.configure({
   layoutTemplate: 'application',
-  loadingTemplate: 'loading',
+  loadingTemplate: 'loading'
 });
 
 Router.map(function() {
@@ -8,11 +8,11 @@ Router.map(function() {
     path: '/',
     waitOn: function() {
       return [
-        Meteor.subscribe('stories') // Change to ideas
+        Meteor.subscribe('tasks') // Change to ideas
       ];
     },
     data: function() {
-      return Stories.find({});
+      return Tasks.find({});
     }
   });
 

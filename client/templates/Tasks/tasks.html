@@ -9,8 +9,8 @@
       Current
     </header>
     <ul class="list-group">
-      {{#each story}}
-        {{> storyItem}}
+      {{#each task}}
+        {{> taskItem}}
       {{/each}}
     </ul>
   </section>
@@ -22,32 +22,32 @@
       Backlog
     </header>
     <ul class="list-group">
-      {{#each story}}
-        {{> storyItem}}
+      {{#each task}}
+        {{> taskItem}}
       {{/each}}
     </ul>
   </section>
 </template>
 
-<template name="storyItem">
+<template name="taskItem">
   {{#unless status.isFinished}}
-    <li class="story list-group-item">
-      <div class="story-title">
+    <li class="task list-group-item">
+      <div class="task-title">
         {{title}}
       </div>
-      <div class="story-options">
+      <div class="task-options">
         <div class="pull-left">
-          <button type="button" class="btn btn-default btn-sm mtr_upvote-story">
+          <button type="button" class="btn btn-default btn-sm mtr_upvote-task">
             +{{priority}}
           </button>
           <button type="button" class="btn btn-default btn-sm">Unassigned</button>
           <button type="button" class="btn btn-default btn-sm">0 points</button>
           <button type="button" class="btn btn-default btn-sm">No discussion</button>
-          {{> storyTag}}
+          {{> taskTag}}
         </div>
         <div class="pull-right">
           {{#unless status.isStarted}}
-            <button type="button" class="btn btn-default btn-sm mtr_move-story">
+            <button type="button" class="btn btn-default btn-sm mtr_move-task">
               {{#if isCurrent}}
                 Move to backlog
               {{else}}
@@ -86,8 +86,8 @@
   </button>
 </template>
 
-<template name="storyLoe">
-  <div class="story-loe dropdown pull-left">
+<template name="taskLoe">
+  <div class="task-loe dropdown pull-left">
     <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown">
       {{averageLoe}} points
     </button>
@@ -101,8 +101,8 @@
   </div>
 </template>
 
-<template name="storyTag">
-  <div class="story-tag">
+<template name="taskTag">
+  <div class="task-tag">
     {{#if tagId}}
       <button class="btn btn-default btn-sm mtr_toggle-tag" type="button">
         {{tagName}}
@@ -113,27 +113,27 @@
           Add a tag
         </button>
       {{else}}
-        <input type="text" class="form-control input-sm mtr_add-tag-to-story" placeholder="Add a tag" autofocus>
+        <input type="text" class="form-control input-sm mtr_add-tag-to-task" placeholder="Add a tag" autofocus>
       {{/unless}}
     {{/if}}
   </div>
 </template>
 
-<template name="newStory">
-  <div class="modal fade" id="newStory" tabindex="-1" role="dialog" aria-labelledby="newStoryLabel" aria-hidden="true">
+<template name="newTask">
+  <div class="modal fade" id="newtask" tabindex="-1" role="dialog" aria-labelledby="newTaskLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="newStoryLabel">Add a new story</h4>
+          <h4 class="modal-title" id="newTaskLabel">Add a new task</h4>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label class="control-label">Story title</label>
-            <input type="text" id="mtr_newStoryTitle" class="form-control">
+            <label class="control-label">Task title</label>
+            <input type="text" id="mtr_newTaskTitle" class="form-control">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" id="mtr_addStory" class="btn btn-primary">Add story</button>
+          <button type="submit" id="mtr_addTask" class="btn btn-primary">Add task</button>
         </div>
       </div>
     </div>

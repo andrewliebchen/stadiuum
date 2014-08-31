@@ -1,32 +1,32 @@
-Session.setDefault('addingStory', null);
+Session.setDefault('addingTask', null);
 Session.setDefault('addingTag', null);
 
 Deps.autorun(function() {
-  Meteor.subscribe('stories');
+  Meteor.subscribe('tasks');
   Meteor.subscribe('tags');
 });
 
-Template.current.story = function() {
-  return Stories.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
+Template.current.task = function() {
+  return Tasks.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
 };
 
-Template.backlog.story = function() {
-  return Stories.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
+Template.backlog.task = function() {
+  return Tasks.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
 };
 
-Template.storyTag.addingTag = function() {
+Template.taskTag.addingTag = function() {
   return Session.equals('addingTag', this._id);
 };
 
-Template.storyItem.events({
-  'click .mtr_upvote-story' : function() {
-    Meteor.call('upvoteStory', this._id);
+Template.taskItem.events({
+  'click .mtr_upvote-task' : function() {
+    Meteor.call('upvoteTask', this._id);
   },
 
   'click .mtr_toggle-loe' : function(event) {
-    var story = Stories.findOne(this._id); // Does this get fixed with subscribe?
+    var task = Tasks.findOne(this._id); // Does this get fixed with subscribe?
     var selectedLoe = $(event.target).data('loe');
-    var averageLoe = (story.totalLoe + selectedLoe) / (story.loeUpdates + 1)
+    var averageLoe = (task.totalLoe + selectedLoe) / (task.loeUpdates + 1)
     Meteor.call('updateLoe', this._id, {
       selectedLoe: selectedLoe,
       averageLoe: averageLoe
@@ -34,11 +34,11 @@ Template.storyItem.events({
   },
 
   'click .mtr_add-tag_toggle' : function(event) {
-    $(event.target).closest('.story-tag').addClass('open');
+    $(event.target).closest('.task-tag').addClass('open');
   },
 
-  'click .mtr_move-story' : function() {
-    Stories.update(this._id, {$set: {isCurrent: !this.isCurrent}});
+  'click .mtr_move-task' : function() {
+    Tasks.update(this._id, {$set: {isCurrent: !this.isCurrent}});
     Meteor.call('updateStateAt', {
       id: this._id,
       updateStateAt: Date.now()
@@ -46,34 +46,34 @@ Template.storyItem.events({
   },
 
   'click .mtr_start' : function() {
-    Meteor.call('startStory', this._id);
-    Stories.update(this._id, {$set: {isCurrent: true}});
+    Meteor.call('startTask', this._id);
+    Tasks.update(this._id, {$set: {isCurrent: true}});
   },
 
   'click .mtr_stop' : function() {
-    Meteor.call('stopStory', this._id);
+    Meteor.call('stopTask', this._id);
   },
 
   'click .mtr_finish' : function() {
-    Meteor.call('finishStory', this._id);
+    Meteor.call('finishTask', this._id);
   }
 });
 
-Template.storyTag.events({
+Template.taskTag.events({
   'click .mtr_toggle-tag' : function(event) {
     Session.set('addingTag', this._id);
   },
 
-  'keydown .mtr_add-tag-to-story' : function(event) {
+  'keydown .mtr_add-tag-to-task' : function(event) {
     if (event.which == 13) {
       var tag = $(event.target);
       var tagContent = {
         tagName: tag.val(),
-        storyId: this._id
+        taskId: this._id
       };
 
       if(tagContent != '') {
-        Meteor.call('addTagToStory', tagContent);
+        Meteor.call('addTagTotask', tagContent);
         tag.val('');
         Session.set('addingTag', null);
       }
@@ -81,17 +81,17 @@ Template.storyTag.events({
   }
 });
 
-Template.newStory.events({
-  'click #mtr_addStory' : function(event, template) {
-    var storyTitle = template.find('#mtr_newStoryTitle');
-    var newStory = {
-      title: storyTitle.value,
+Template.newTask.events({
+  'click #mtr_addTask' : function(event, template) {
+    var taskTitle = template.find('#mtr_newTaskTitle');
+    var newTask = {
+      title: taskTitle.value,
       time:  Date.now()
     };
 
-    if(storyTitle.value != '') {
-      Meteor.call('addStory', newStory);
-      storyTitle.value = '';
+    if(taskTitle.value != '') {
+      Meteor.call('addTask', newTask);
+      taskTitle.value = '';
     }
   }
 });

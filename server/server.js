@@ -1,7 +1,7 @@
 Meteor.methods({
-  addStory : function(options) {
-    Stories.insert({
-      type:       'story',
+  addTask : function(options) {
+    Tasks.insert({
+      type:       'task',
       title:      options.title,
       totalLoe:   0,
       averageLoe: 0,
@@ -11,38 +11,38 @@ Meteor.methods({
   },
 
   updateStateAt : function(options) {
-    Stories.update(options.id, {$set: {updateStateAt: options.updateStateAt}});
+    Tasks.update(options.id, {$set: {updateStateAt: options.updateStateAt}});
   },
 
-  upvoteStory : function(storyId) {
-    Stories.update(storyId, {$inc: {priority: 1}});
+  upvoteTask : function(taskId) {
+    Tasks.update(taskId, {$inc: {priority: 1}});
   },
 
-  updateLoe : function(storyId, args) {
-    Stories.update(storyId, {$inc: {
+  updateLoe : function(taskId, args) {
+    Tasks.update(taskId, {$inc: {
       totalLoe: args.selectedLoe,
       loeUpdates: 1
     }, $set: {averageLoe: args.averageLoe}});
   },
 
-  startStory : function(storyId) {
-    Stories.update(storyId, {$set: {status: {isStarted: true, isNotStarted: false, isStopped: false}}});
+  startTask : function(taskId) {
+    Tasks.update(taskId, {$set: {status: {isStarted: true, isNotStarted: false, isStopped: false}}});
   },
 
-  stopStory : function(storyId) {
-    Stories.update(storyId, {$set: {status: {isStopped: true, isStarted: false}}});
+  stopTask : function(taskId) {
+    Tasks.update(taskId, {$set: {status: {isStopped: true, isStarted: false}}});
   },
 
-  finishStory : function(storyId) {
-    Stories.update(storyId, {$set: {status: {isFinished: true, isStarted: false}}});
+  finishTask : function(taskId) {
+    Tasks.update(taskId, {$set: {status: {isFinished: true, isStarted: false}}});
   },
 
-  addTagToStory : function(tagContent) {
+  addTagToTask : function(tagContent) {
     var newTagId = Tags.insert({
       tag: tagContent.tagName,
-      storyId: tagContent.storyId
+      taskId: tagContent.taskId
     });
-    Stories.update(tagContent.storyId, {$set: {tagName: tagContent.tagName, tagId: newTagId}});
+    Tasks.update(tagContent.taskId, {$set: {tagName: tagContent.tagName, tagId: newTagId}});
   }
 });
 

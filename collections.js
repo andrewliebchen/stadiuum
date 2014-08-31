@@ -1,3 +1,3 @@
-Stories  = new Meteor.Collection('stories');
+Tasks    = new Meteor.Collection('tasks');
 Tags     = new Meteor.Collection('tags');
 

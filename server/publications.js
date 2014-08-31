@@ -1,5 +1,5 @@
-Meteor.publish('stories', function() {
-  return Stories.find({});
+Meteor.publish('tasks', function() {
+  return Tasks.find({});
 });
 
 Meteor.publish('tags', function() {

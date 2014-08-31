@@ -45,22 +45,22 @@ body {
   margin-bottom: 1em;
 }
 
-.story {
+.task {
   &:hover {
     // background-color: $gray-lighter;
   }
 }
 
-.story-title {
+.task-title {
   line-height: 1.5;
   overflow: auto;
 }
 
-.story-options {
+.task-options {
   @include clearfix;
   margin-top: 0.5em;
 
-  .story:hover & {
+  .task:hover & {
     display: block;
   }
 }
@@ -71,7 +71,7 @@ body {
   }
 }
 
-.story-tag{
+.task-tag{
   width: 160px;
   display: inline-block;
 }
