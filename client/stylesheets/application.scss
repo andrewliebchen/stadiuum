@@ -11,7 +11,7 @@ $tag-colors: rgb(109, 149, 255),
              rgb(36, 197, 96);
 
 @import "packages/andrewliebchen:meteor-bourbon/bourbon";
-@import "packages/andrewliebchen:meteor-bootstrap3-sass/bootstrap";
+@import ".meteor/local/build/programs/server/assets/packages/reywood:bootstrap3-sass/bootstrap";
 
 // HELPERS
 @mixin ellipsis {
@@ -62,3 +62,42 @@ body {
   margin-top: 0.5em;
 }
 
+.item-meta {
+  float: left;
+}
+
+.item-actions {
+  float: right;
+}
+
+.item-progress {
+  width: 25%;
+  float: left;
+  margin-left: 5px;
+
+  .progress {
+    margin: 0;
+  }
+}
+
+.item-progress-label {
+  float: left;
+  margin-right: 5px;
+}
+
+// IDEA
+.idea {
+  display: block;
+  color: $gray-darker;
+
+  &:hover {
+    text-decoration: none;
+    color: initial;
+  }
+}
+
+.idea-container {
+  .nav-tabs {
+    margin-bottom: 1em;
+  }
+}

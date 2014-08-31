@@ -35,46 +35,48 @@
       {{title}}
     </div>
     <div class="item-options">
-      <div class="pull-left">
-        <button type="button" class="btn btn-default btn-sm mtr_upvote-task">
-          +{{priority}}
-        </button>
+      <div class="item-meta">
+        {{> upvote}}
         <button type="button" class="btn btn-default btn-sm">Unassigned</button>
         <button type="button" class="btn btn-default btn-sm">0 points</button>
         <button type="button" class="btn btn-default btn-sm">No discussion</button>
       </div>
-      <div class="pull-right">
-        {{#unless status.isStarted}}
-          <button type="button" class="btn btn-default btn-sm mtr_move-task">
-            {{#if isCurrent}}
-              Move to backlog
-            {{else}}
-              Move to current
-            {{/if}}
-          </button>
-        {{/unless}}
-        {{#if status.isNotStarted}}
-          <button type="button" class="btn btn-primary btn-sm mtr_start">
-            Start
-          </button>
-        {{/if}}
-        {{#if status.isStarted}}
-          <button type="button" class="btn btn-danger btn-sm mtr_stop">
-            Stop
-          </button>
-          <button type="button" class="btn btn-primary btn-sm mtr_finish">
-            Done
-          </button>
-        {{/if}}
-        {{#if status.isStopped}}
-          {{> restartButton}}
-        {{/if}}
-        {{#if status.isFinished}}
-          {{> restartButton}}
-        {{/if}}
-      </div>
+      {{> taskActions}}
     </div>
   </li>
+</template>
+
+<template name="taskActions">
+  <div class="item-actions">
+    {{#unless status.isStarted}}
+      <button type="button" class="btn btn-default btn-sm mtr_move-task">
+        {{#if isCurrent}}
+          Move to backlog
+        {{else}}
+          Move to current
+        {{/if}}
+      </button>
+    {{/unless}}
+    {{#if status.isNotStarted}}
+      <button type="button" class="btn btn-primary btn-sm mtr_start">
+        Start
+      </button>
+    {{/if}}
+    {{#if status.isStarted}}
+      <button type="button" class="btn btn-danger btn-sm mtr_stop">
+        Stop
+      </button>
+      <button type="button" class="btn btn-primary btn-sm mtr_finish">
+        Done
+      </button>
+    {{/if}}
+    {{#if status.isStopped}}
+      {{> restartButton}}
+    {{/if}}
+    {{#if status.isFinished}}
+      {{> restartButton}}
+    {{/if}}
+  </div>
 </template>
 
 <template name="restartButton">
@@ -99,22 +101,24 @@
 </template>
 
 <template name="newTask">
-  <div class="modal fade" id="newtask" tabindex="-1" role="dialog" aria-labelledby="newTaskLabel" aria-hidden="true">
+  <div class="modal" id="newTask" tabindex="-1" role="dialog" aria-labelledby="newTaskLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="newTaskLabel">Add a new task</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="control-label">Task title</label>
-            <input type="text" id="mtr_newTaskTitle" class="form-control">
+      <form>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="newTaskLabel">Add a new task</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="control-label">Task title</label>
+              <input type="text" id="mtr_newTaskTitle" class="form-control">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="mtr_addTask" class="btn btn-primary" data-dismiss="modal">Add task</button>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" id="mtr_addTask" class="btn btn-primary">Add task</button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>

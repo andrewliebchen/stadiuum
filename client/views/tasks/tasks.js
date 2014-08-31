@@ -9,10 +9,6 @@ Template.backlog.task = function() {
 };
 
 Template.taskItem.events({
-  'click .mtr_upvote-task' : function() {
-    Meteor.call('upvoteTask', this._id);
-  },
-
   'click .mtr_toggle-loe' : function(event) {
     var task = Items.findOne(this._id); // Does this get fixed with subscribe?
     var selectedLoe = $(event.target).data('loe');
@@ -49,8 +45,9 @@ Template.newTask.events({
   'click #mtr_addTask' : function(event, template) {
     var taskTitle = template.find('#mtr_newTaskTitle');
     var newTask = {
-      title: taskTitle.value,
-      time:  Date.now()
+      title:      taskTitle.value,
+      time:       Date.now(),
+      parentId:   Session.get('currentIdea')
     };
 
     if(taskTitle.value != '') {

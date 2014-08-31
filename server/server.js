@@ -1,11 +1,13 @@
 // Items.insert({
 //   type:       'task'/'idea',
 //   title:      'Item title',
+//   isCurrent:  false,
 //   priority:   0,
 //   totalLoe:   0,
 //   averageLoe: 0,
 //   loeUpdates: 0,
 //   createdAt:  options.time,
+//   parentId: id,
 //   status: {
 //     isNotStarted: true,
 //     isStarted: false,
@@ -22,7 +24,12 @@ Meteor.methods({
       totalLoe:   0,
       averageLoe: 0,
       loeUpdates: 0,
-      createdAt:  options.time
+      createdAt:  options.time,
+      parentId:   options.parentId,
+      isCurrent:  false,
+      status: {
+        isNotStarted: true
+      }
     });
   },
 
@@ -30,8 +37,8 @@ Meteor.methods({
     Items.update(options.id, {$set: {updateStateAt: options.updateStateAt}});
   },
 
-  upvoteTask : function(taskId) {
-    Items.update(taskId, {$inc: {priority: 1}});
+  upvoteItem : function(itemId) {
+    Items.update(itemId, {$inc: {priority: 1}});
   },
 
   updateLoe : function(taskId, args) {

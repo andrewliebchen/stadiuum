@@ -2,6 +2,7 @@ Meteor.startup(function () {
   Items.remove({});
 
   if(Items.find().count() === 0) {
+    // TASKS
     Items.insert({
       type:       'task',
       title:      "As a developer, I'd like to add stories to a current section, so that I can know what stories people are working on",
@@ -52,6 +53,28 @@ Meteor.startup(function () {
       status: {
         isNotStarted: true
       }
+    });
+
+    // IDEAS
+    Items.insert({
+      type:        'idea',
+      title:       'Teams',
+      description: 'Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum.',
+      createdAt:   Date.now()
+    });
+
+    Items.insert({
+      type:        'idea',
+      title:       'Chat',
+      description: 'Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum.',
+      createdAt:   Date.now()
+    });
+
+    Items.insert({
+      type:        'idea',
+      title:       'Notes',
+      description: 'Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum.',
+      createdAt:   Date.now()
     });
   };
 });
