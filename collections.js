@@ -1,2 +1,1 @@
-Ideas = new Meteor.Collection('ideas');
-Tasks = new Meteor.Collection('tasks');
+Items = new Meteor.Collection('ideas');

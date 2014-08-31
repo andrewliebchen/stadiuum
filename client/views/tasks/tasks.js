@@ -1,11 +1,11 @@
 Session.setDefault('addingTask', null);
 
 Template.current.task = function() {
-  return Tasks.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
+  return Items.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
 };
 
 Template.backlog.task = function() {
-  return Tasks.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
+  return Items.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
 };
 
 Template.taskItem.events({
@@ -14,7 +14,7 @@ Template.taskItem.events({
   },
 
   'click .mtr_toggle-loe' : function(event) {
-    var task = Tasks.findOne(this._id); // Does this get fixed with subscribe?
+    var task = Items.findOne(this._id); // Does this get fixed with subscribe?
     var selectedLoe = $(event.target).data('loe');
     var averageLoe = (task.totalLoe + selectedLoe) / (task.loeUpdates + 1)
     Meteor.call('updateLoe', this._id, {
@@ -24,7 +24,7 @@ Template.taskItem.events({
   },
 
   'click .mtr_move-task' : function() {
-    Tasks.update(this._id, {$set: {isCurrent: !this.isCurrent}});
+    Items.update(this._id, {$set: {isCurrent: !this.isCurrent}});
     Meteor.call('updateStateAt', {
       id: this._id,
       updateStateAt: Date.now()
@@ -33,7 +33,7 @@ Template.taskItem.events({
 
   'click .mtr_start' : function() {
     Meteor.call('startTask', this._id);
-    Tasks.update(this._id, {$set: {isCurrent: true}});
+    Items.update(this._id, {$set: {isCurrent: true}});
   },
 
   'click .mtr_stop' : function() {

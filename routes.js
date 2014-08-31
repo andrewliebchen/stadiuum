@@ -12,7 +12,7 @@ Router.map(function() {
       ];
     },
     data: function() {
-      return Ideas.find({});
+      return Items.find({});
     }
   });
 
@@ -24,7 +24,7 @@ Router.map(function() {
       ];
     },
     data: function() {
-      return Tasks.find({});
+      return Items.find({});
     }
   });
 

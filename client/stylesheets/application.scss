@@ -13,10 +13,17 @@ $tag-colors: rgb(109, 149, 255),
 @import "packages/andrewliebchen:meteor-bourbon/bourbon";
 @import "packages/andrewliebchen:meteor-bootstrap3-sass/bootstrap";
 
+// HELPERS
 @mixin ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@for $i from 1 through length($tag-colors) {
+  .tag-color-#{$i} {
+    background-color: nth($tag-colors, $i);
+  }
 }
 
 // PACKAGES
@@ -25,7 +32,7 @@ $tag-colors: rgb(109, 149, 255),
   box-shadow: none;
 
   &::before {
-    content: none; // can turn this off somewhere else?
+    content: none !important; // can turn this off somewhere else?
   }
 }
 
@@ -45,34 +52,13 @@ body {
   margin-bottom: 1em;
 }
 
-.task {
-  &:hover {
-    // background-color: $gray-lighter;
-  }
-}
-
-.task-title {
+.item-title {
   line-height: 1.5;
   overflow: auto;
 }
 
-.task-options {
+.item-options {
   @include clearfix;
   margin-top: 0.5em;
-
-  .task:hover & {
-    display: block;
-  }
-}
-
-@for $i from 1 through length($tag-colors) {
-  .tag-color-#{$i} {
-    background-color: nth($tag-colors, $i);
-  }
-}
-
-.task-tag{
-  width: 160px;
-  display: inline-block;
 }
 

@@ -1,6 +1,22 @@
+// Items.insert({
+//   type:       'task'/'idea',
+//   title:      'Item title',
+//   priority:   0,
+//   totalLoe:   0,
+//   averageLoe: 0,
+//   loeUpdates: 0,
+//   createdAt:  options.time,
+//   status: {
+//     isNotStarted: true,
+//     isStarted: false,
+//     isStopped: false,
+//     isFinished: false
+//   }
+// });
+
 Meteor.methods({
   addTask : function(options) {
-    Tasks.insert({
+    Items.insert({
       type:       'task',
       title:      options.title,
       totalLoe:   0,
@@ -11,30 +27,30 @@ Meteor.methods({
   },
 
   updateStateAt : function(options) {
-    Tasks.update(options.id, {$set: {updateStateAt: options.updateStateAt}});
+    Items.update(options.id, {$set: {updateStateAt: options.updateStateAt}});
   },
 
   upvoteTask : function(taskId) {
-    Tasks.update(taskId, {$inc: {priority: 1}});
+    Items.update(taskId, {$inc: {priority: 1}});
   },
 
   updateLoe : function(taskId, args) {
-    Tasks.update(taskId, {$inc: {
+    Items.update(taskId, {$inc: {
       totalLoe: args.selectedLoe,
       loeUpdates: 1
     }, $set: {averageLoe: args.averageLoe}});
   },
 
   startTask : function(taskId) {
-    Tasks.update(taskId, {$set: {status: {isStarted: true, isNotStarted: false, isStopped: false}}});
+    Items.update(taskId, {$set: {status: {isStarted: true, isNotStarted: false, isStopped: false}}});
   },
 
   stopTask : function(taskId) {
-    Tasks.update(taskId, {$set: {status: {isStopped: true, isStarted: false}}});
+    Items.update(taskId, {$set: {status: {isStopped: true, isStarted: false}}});
   },
 
   finishTask : function(taskId) {
-    Tasks.update(taskId, {$set: {status: {isFinished: true, isStarted: false}}});
+    Items.update(taskId, {$set: {status: {isFinished: true, isStarted: false}}});
   }
 
   // addTagToTask : function(tagContent) {

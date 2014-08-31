@@ -30,53 +30,51 @@
 </template>
 
 <template name="taskItem">
-  {{#unless status.isFinished}}
-    <li class="task list-group-item">
-      <div class="task-title">
-        {{title}}
+  <li class="task item list-group-item">
+    <div class="item-title">
+      {{title}}
+    </div>
+    <div class="item-options">
+      <div class="pull-left">
+        <button type="button" class="btn btn-default btn-sm mtr_upvote-task">
+          +{{priority}}
+        </button>
+        <button type="button" class="btn btn-default btn-sm">Unassigned</button>
+        <button type="button" class="btn btn-default btn-sm">0 points</button>
+        <button type="button" class="btn btn-default btn-sm">No discussion</button>
       </div>
-      <div class="task-options">
-        <div class="pull-left">
-          <button type="button" class="btn btn-default btn-sm mtr_upvote-task">
-            +{{priority}}
+      <div class="pull-right">
+        {{#unless status.isStarted}}
+          <button type="button" class="btn btn-default btn-sm mtr_move-task">
+            {{#if isCurrent}}
+              Move to backlog
+            {{else}}
+              Move to current
+            {{/if}}
           </button>
-          <button type="button" class="btn btn-default btn-sm">Unassigned</button>
-          <button type="button" class="btn btn-default btn-sm">0 points</button>
-          <button type="button" class="btn btn-default btn-sm">No discussion</button>
-        </div>
-        <div class="pull-right">
-          {{#unless status.isStarted}}
-            <button type="button" class="btn btn-default btn-sm mtr_move-task">
-              {{#if isCurrent}}
-                Move to backlog
-              {{else}}
-                Move to current
-              {{/if}}
-            </button>
-          {{/unless}}
-          {{#if status.isNotStarted}}
-            <button type="button" class="btn btn-primary btn-sm mtr_start">
-              Start
-            </button>
-          {{/if}}
-          {{#if status.isStarted}}
-            <button type="button" class="btn btn-danger btn-sm mtr_stop">
-              Stop
-            </button>
-            <button type="button" class="btn btn-primary btn-sm mtr_finish">
-              Done
-            </button>
-          {{/if}}
-          {{#if status.isStopped}}
-            {{> restartButton}}
-          {{/if}}
-          {{#if status.isFinished}}
-            {{> restartButton}}
-          {{/if}}
-        </div>
+        {{/unless}}
+        {{#if status.isNotStarted}}
+          <button type="button" class="btn btn-primary btn-sm mtr_start">
+            Start
+          </button>
+        {{/if}}
+        {{#if status.isStarted}}
+          <button type="button" class="btn btn-danger btn-sm mtr_stop">
+            Stop
+          </button>
+          <button type="button" class="btn btn-primary btn-sm mtr_finish">
+            Done
+          </button>
+        {{/if}}
+        {{#if status.isStopped}}
+          {{> restartButton}}
+        {{/if}}
+        {{#if status.isFinished}}
+          {{> restartButton}}
+        {{/if}}
       </div>
-    </li>
-  {{/unless}}
+    </div>
+  </li>
 </template>
 
 <template name="restartButton">
@@ -86,7 +84,7 @@
 </template>
 
 <template name="taskLoe">
-  <div class="task-loe dropdown pull-left">
+  <div class="item-loe dropdown pull-left">
     <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown">
       {{averageLoe}} points
     </button>

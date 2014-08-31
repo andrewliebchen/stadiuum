@@ -1,7 +1,7 @@
 Meteor.publish('tasks', function() {
-  return Tasks.find({});
+  return Items.find({type: 'task', 'status.isFinished': null});
 });
 
 Meteor.publish('ideas', function() {
-  return Ideas.find({});
+  return Items.find({type: 'idea'});
 });

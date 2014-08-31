@@ -1,10 +1,9 @@
 Meteor.startup(function () {
-  Tasks.remove({});
-  Ideas.remove({});
+  Items.remove({});
 
-  if(Tasks.find().count() === 0) {
-    Tasks.insert({
-      type:       'story',
+  if(Items.find().count() === 0) {
+    Items.insert({
+      type:       'task',
       title:      "As a developer, I'd like to add stories to a current section, so that I can know what stories people are working on",
       totalLoe:   0,
       averageLoe: 0,
@@ -16,8 +15,8 @@ Meteor.startup(function () {
       }
     });
 
-    Tasks.insert({
-      type:       'story',
+    Items.insert({
+      type:       'task',
       title:      "As a developer, I'd like to be able to add dividers between stories, so that I can plan sprints however I want",
       totalLoe:   0,
       averageLoe: 0,
@@ -29,8 +28,8 @@ Meteor.startup(function () {
       }
     });
 
-    Tasks.insert({
-      type:       'story',
+    Items.insert({
+      type:       'task',
       title:      "As a developer, I'd like to be able to drag and drop stories to reorder them, so that I can add and remove stories from sections I want",
       totalLoe:   0,
       averageLoe: 0,
@@ -42,8 +41,8 @@ Meteor.startup(function () {
       }
     });
 
-    Tasks.insert({
-      type:       'story',
+    Items.insert({
+      type:       'task',
       title:      "As a developer, I'd like to be able to sort the list of stories in different ways, so I can get different views of my queue",
       totalLoe:   0,
       averageLoe: 0,
