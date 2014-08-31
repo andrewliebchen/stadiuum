@@ -1,6 +1,6 @@
 Meteor.startup(function () {
   Tasks.remove({});
-  Tags.remove({});
+  Ideas.remove({});
 
   if(Tasks.find().count() === 0) {
     Tasks.insert({

@@ -1,3 +1,2 @@
-Tasks    = new Meteor.Collection('tasks');
-Tags     = new Meteor.Collection('tags');
-
+Ideas = new Meteor.Collection('ideas');
+Tasks = new Meteor.Collection('tasks');

@@ -35,15 +35,15 @@ Meteor.methods({
 
   finishTask : function(taskId) {
     Tasks.update(taskId, {$set: {status: {isFinished: true, isStarted: false}}});
-  },
-
-  addTagToTask : function(tagContent) {
-    var newTagId = Tags.insert({
-      tag: tagContent.tagName,
-      taskId: tagContent.taskId
-    });
-    Tasks.update(tagContent.taskId, {$set: {tagName: tagContent.tagName, tagId: newTagId}});
   }
+
+  // addTagToTask : function(tagContent) {
+  //   var newTagId = Tags.insert({
+  //     tag: tagContent.tagName,
+  //     taskId: tagContent.taskId
+  //   });
+  //   Tasks.update(tagContent.taskId, {$set: {tagName: tagContent.tagName, tagId: newTagId}});
+  // }
 });
 
 // Create a profile for new users

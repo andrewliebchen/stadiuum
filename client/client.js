@@ -1,9 +1,8 @@
 Session.setDefault('addingTask', null);
-Session.setDefault('addingTag', null);
 
 Deps.autorun(function() {
   Meteor.subscribe('tasks');
-  Meteor.subscribe('tags');
+  Meteor.subscribe('ideas');
 });
 
 Template.current.task = function() {
@@ -12,10 +11,6 @@ Template.current.task = function() {
 
 Template.backlog.task = function() {
   return Tasks.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
-};
-
-Template.taskTag.addingTag = function() {
-  return Session.equals('addingTag', this._id);
 };
 
 Template.taskItem.events({
@@ -31,10 +26,6 @@ Template.taskItem.events({
       selectedLoe: selectedLoe,
       averageLoe: averageLoe
     });
-  },
-
-  'click .mtr_add-tag_toggle' : function(event) {
-    $(event.target).closest('.task-tag').addClass('open');
   },
 
   'click .mtr_move-task' : function() {
@@ -56,28 +47,6 @@ Template.taskItem.events({
 
   'click .mtr_finish' : function() {
     Meteor.call('finishTask', this._id);
-  }
-});
-
-Template.taskTag.events({
-  'click .mtr_toggle-tag' : function(event) {
-    Session.set('addingTag', this._id);
-  },
-
-  'keydown .mtr_add-tag-to-task' : function(event) {
-    if (event.which == 13) {
-      var tag = $(event.target);
-      var tagContent = {
-        tagName: tag.val(),
-        taskId: this._id
-      };
-
-      if(tagContent != '') {
-        Meteor.call('addTagTotask', tagContent);
-        tag.val('');
-        Session.set('addingTag', null);
-      }
-    }
   }
 });
 

@@ -1,19 +1,23 @@
 <template name="header">
   <header class="header">
     <div class="btn-group pull-left">
-      <button type="button" class="btn btn-default">
-        Ideas
-      </button>
-      <button type="button" class="btn btn-default active">
-        Tasks
-      </button>
-      <button type="button" class="btn btn-default">
-        Circles
-      </button>
+      {{> navItems}}
     </div>
     <div class="pull-right">
       {{> loginButtons}}
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newStory">New story</button>
     </div>
   </header>
+</template>
+
+<template name="navItems">
+  <a href="{{pathFor 'ideas'}}" class="{{ activeClass 'ideas' }}">
+    Ideas
+  </a>
+  <a href="{{pathFor 'tasks'}}" class="{{ activeClass 'tasks' }}">
+    Tasks
+  </a>
+  <a class="btn btn-default">
+    Circles
+  </a>
 </template>

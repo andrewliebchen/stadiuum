@@ -4,11 +4,23 @@ Router.configure({
 });
 
 Router.map(function() {
-  this.route('tasks', {
+  this.route('ideas', {
     path: '/',
     waitOn: function() {
       return [
-        Meteor.subscribe('tasks') // Change to ideas
+        Meteor.subscribe('ideas')
+      ];
+    },
+    data: function() {
+      return Ideas.find({});
+    }
+  });
+
+  this.route('tasks', {
+    path: '/tasks',
+    waitOn: function() {
+      return [
+        Meteor.subscribe('tasks')
       ];
     },
     data: function() {
@@ -17,7 +29,7 @@ Router.map(function() {
   });
 
   this.route('singleTask', {
-    path: '/task/:_id',
+    path: '/tasks/:_id',
     waitOn: function() {
       return [
         // Meteor.subscribe('singleTask', this.params._id)
