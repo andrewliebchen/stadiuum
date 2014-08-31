@@ -1,10 +1,5 @@
 Session.setDefault('addingTask', null);
 
-Deps.autorun(function() {
-  Meteor.subscribe('tasks');
-  Meteor.subscribe('ideas');
-});
-
 Template.current.task = function() {
   return Tasks.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
 };
