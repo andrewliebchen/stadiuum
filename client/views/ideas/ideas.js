@@ -6,3 +6,9 @@ Template.ideas.idea = function() {
 Template.singleIdea.task = function() {
   return Items.find({type: 'task'});
 }
+
+Template.ideaItem.events({
+  'click .mtr_idea-link' : function() {
+    Router.go('singleIdea', {_id: this._id});
+  }
+});

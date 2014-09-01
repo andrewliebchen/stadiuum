@@ -87,12 +87,14 @@ body {
 
 // IDEA
 .idea {
-  display: block;
-  color: $gray-darker;
+
+}
+
+.mtr_idea-link {
+  cursor: pointer;
 
   &:hover {
-    text-decoration: none;
-    color: initial;
+    color: $brand-primary;
   }
 }
 
