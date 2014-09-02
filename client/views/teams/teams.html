@@ -1,5 +1,38 @@
 <template name="teams">
   <section class="teams">
-    Teams
+    {{> teamItem}}
+    {{> teamItem}}
+    {{> teamItem}}
+    <button type="button" class="btn btn-primary">Organize a new team</button>
   </section>
+</template>
+
+<template name="teamItem">
+  <div class="panel panel-default">
+    <header class="panel-heading">
+      Team name
+    </header>
+    <div class="panel-body">
+      <div class="clearfix">
+        <img class="media-object img-circle pull-left" src="http://placehold.it/48x48">
+        <img class="media-object img-circle pull-left" src="http://placehold.it/48x48">
+        <img class="media-object img-circle pull-left" src="http://placehold.it/48x48">
+        <img class="media-object img-circle pull-left" src="http://placehold.it/48x48">
+        <button type="button" class="btn btn-default">Add team member</button>
+      </div>
+      <ul class="nav nav-underline-tabs" role="tablist">
+        <li>Tasks</li>
+        <li class="active"><a href="#active_tasks" role="tab" data-toggle="tab">Active</a></li>
+        <li><a href="#assigned_tasks" role="tab" data-toggle="tab">Assigned</a></li>
+      </ul>
+      <div class="tab-content panel panel-default">
+        <div class="tab-pane panel-body active" id="active_tasks">
+          Active tasks
+        </div>
+        <div class="tab-pane panel-body" id="assigned_tasks">
+          Assigned tasks
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
