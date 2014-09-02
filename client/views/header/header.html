@@ -14,13 +14,13 @@
 </template>
 
 <template name="navItems">
-  <a href="{{pathFor 'ideas'}}" class="{{ activeClass 'ideas' }}">
+  <a href="{{pathFor 'ideas'}}" class="{{activeClass 'ideas'}}">
     Ideas
   </a>
-  <a href="{{pathFor 'tasks'}}" class="{{ activeClass 'tasks' }}">
+  <a href="{{pathFor 'tasks'}}" class="{{activeClass 'tasks'}}">
     Tasks
   </a>
-  <a class="btn btn-default">
-    Circles
+  <a href="{{pathFor 'teams'}}" class="{{activeClass 'teams'}}">
+    Teams
   </a>
 </template>

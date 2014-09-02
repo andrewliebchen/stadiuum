@@ -52,6 +52,16 @@ Router.map(function() {
       return Items.findOne(this.params._id);
     }
   });
+
+  this.route('teams', {
+    path: '/teams',
+    waitOn: function() {
+      // return Meteor.subscribe('teams');
+    },
+    data: function() {
+      // return Items.find({});
+    }
+  });
 });
 
 Router.onBeforeAction('loading');
