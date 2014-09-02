@@ -1,0 +1,21 @@
+<template name="checklist">
+  <div class="panel panel-default">
+    <ul class="list-group">
+      {{> checklistItem}}
+      {{> checklistItem}}
+      {{> checklistItem}}
+      {{> checklistItem}}
+    </ul>
+  </div>
+</template>
+
+<template name="checklistItem">
+  <li class="list-group-item">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox">
+        <strong>@andrewliebchen</strong> Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum.
+      </label>
+    </div>
+  </li>
+</template>

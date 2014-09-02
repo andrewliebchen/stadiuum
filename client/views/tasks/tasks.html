@@ -10,7 +10,9 @@
     </header>
     <ul class="list-group">
       {{#each task}}
-        {{> taskItem}}
+        <li class="task item list-group-item">
+          {{> taskItem}}
+        </li>
       {{/each}}
     </ul>
   </section>
@@ -23,27 +25,55 @@
     </header>
     <ul class="list-group">
       {{#each task}}
-        {{> taskItem}}
+        <li class="task item list-group-item">
+          {{> taskItem}}
+        </li>
       {{/each}}
     </ul>
   </section>
 </template>
 
+<template name="singleTask">
+  <section class="item-container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {{> taskItem}}
+      </div>
+    </div>
+    <ul class="nav nav-underline-tabs" role="tablist">
+      <li class="active"><a href="#tasks" role="tab" data-toggle="tab">Checklist</a></li>
+      <li><a href="#discussion" role="tab" data-toggle="tab">Discussion  <span class="badge">2</span></a></li>
+      <li><a href="#notes" role="tab" data-toggle="tab">Notes</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tasks">
+        {{> checklist}}
+      </div>
+      <div class="tab-pane" id="discussion">
+        {{> discussion}}
+      </div>
+      <div class="tab-pane" id="notes">
+        {{> notes}}
+      </div>
+    </div>
+  </section>
+</template>
+
 <template name="taskItem">
-  <li class="task item list-group-item">
+  <div class="mtr_item-link">
     <div class="item-title">
       {{title}}
     </div>
-    <div class="item-options">
-      <div class="item-meta">
-        {{> upvote}}
-        <button type="button" class="btn btn-default btn-sm">Unassigned</button>
-        <button type="button" class="btn btn-default btn-sm">0 points</button>
-        <button type="button" class="btn btn-default btn-sm">No discussion</button>
-      </div>
-      {{> taskActions}}
+  </div>
+  <div class="item-options">
+    <div class="item-meta">
+      {{> upvote}}
+      <button type="button" class="btn btn-default btn-sm">Unassigned</button>
+      <button type="button" class="btn btn-default btn-sm">0 points</button>
+      <button type="button" class="btn btn-default btn-sm">No discussion</button>
     </div>
-  </li>
+    {{> taskActions}}
+  </div>
 </template>
 
 <template name="taskActions">

@@ -7,25 +7,23 @@
 </template>
 
 <template name="singleIdea">
-  <section class="idea-container">
+  <section class="item-container">
     {{> ideaItem}}
-    <ul class="nav nav-tabs" role="tablist">
+    <ul class="nav nav-underline-tabs" role="tablist">
       <li class="active"><a href="#tasks" role="tab" data-toggle="tab">Tasks</a></li>
-      <li><a href="#discussion" role="tab" data-toggle="tab">Discussion</a></li>
+      <li><a href="#discussion" role="tab" data-toggle="tab">Discussion  <span class="badge">2</span></a></li>
       <li><a href="#notes" role="tab" data-toggle="tab">Notes</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tasks">
-        <div class="panel panel-default">
-          <ul class="list-group">
-            {{#each task}}
-              {{> taskItem}}
-            {{/each}}
-          </ul>
-        </div>
+        {{> childTasks}}
       </div>
-      <div class="tab-pane" id="discussion"></div>
-      <div class="tab-pane" id="notes"></div>
+      <div class="tab-pane" id="discussion">
+        {{> discussion}}
+      </div>
+      <div class="tab-pane" id="notes">
+        {{> notes}}
+      </div>
     </div>
   </section>
 </template>
@@ -33,7 +31,7 @@
 <template name="ideaItem">
   <div class="idea item panel panel-default">
     <div class="panel-body">
-      <div class="mtr_idea-link">
+      <div class="mtr_item-link">
         <p><strong>{{title}}</strong></p>
         <div class="item-description">
           <p>{{description}}</p>
@@ -60,5 +58,15 @@
         </div>
       </div>
     </div>
+  </div>
+</template>
+
+<template name="childTasks">
+  <div class="panel panel-default">
+    <ul class="list-group">
+      {{#each task}}
+        {{> taskItem}}
+      {{/each}}
+    </ul>
   </div>
 </template>

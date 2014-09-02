@@ -1,0 +1,27 @@
+<template name="discussion">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{> message}}
+      {{> message}}
+      {{> message}}
+      {{> message}}
+    </div>
+    <footer class="panel-footer">
+      <input type="text" class="form-control" placeholder="Text input">
+    </footer>
+  </div>
+</template>
+
+<template name="message">
+  <div class="media">
+    <div class="pull-left">
+      <img class="media-object img-circle" src="http://placehold.it/48x48">
+    </div>
+    <div class="media-body">
+      <small class="media-heading">
+        <strong>Andrew Liebchen</strong>
+      </small>
+      <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+    </div>
+  </div>
+</template>

@@ -9,6 +9,10 @@ Template.backlog.task = function() {
 };
 
 Template.taskItem.events({
+  'click .mtr_item-link' : function() {
+    Router.go('singleTask', {_id: this._id});
+  },
+
   'click .mtr_toggle-loe' : function(event) {
     var task = Items.findOne(this._id); // Does this get fixed with subscribe?
     var selectedLoe = $(event.target).data('loe');

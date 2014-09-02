@@ -41,6 +41,7 @@ body {
   @include transition;
   font-size: 16px;
   font-family: $helvetica;
+  // background-color: #f9f9f9;
 }
 
 .header {
@@ -85,12 +86,41 @@ body {
   margin-right: 5px;
 }
 
-// IDEA
-.idea {
+.nav.nav-underline-tabs {
+  padding: 0 5px;
+  position: relative;
+  z-index: 1;
 
+  li {
+    float: left;
+    font-weight: bold;
+    padding: 0 10px;
+
+    &.active a {
+      border-bottom-color: $brand-primary;
+      color: $brand-primary;
+
+      .badge {
+        background-color: $brand-primary;
+      }
+    }
+  }
+
+  a {
+    border-bottom: 3px solid transparent;
+    color: $gray-light;
+    margin-bottom: -2px;
+    padding: 10px 0;
+
+    &:hover {
+      background-color: transparent;
+      color: $brand-primary;
+    }
+  }
 }
 
-.mtr_idea-link {
+// Probably need a style hook
+.mtr_item-link {
   cursor: pointer;
 
   &:hover {
@@ -98,7 +128,7 @@ body {
   }
 }
 
-.idea-container {
+.item-container {
   .nav-tabs {
     margin-bottom: 1em;
   }

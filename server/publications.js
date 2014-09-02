@@ -2,7 +2,7 @@ Meteor.publish('ideas', function() {
   return Items.find({type: 'idea'});
 });
 
-Meteor.publish('singleIdea', function(id) {
+Meteor.publish('singleItem', function(id) {
   return id && Items.find(id);
 });
 

@@ -18,7 +18,7 @@ Router.map(function() {
     path: '/ideas/:_id',
     waitOn: function() {
       return [
-        Meteor.subscribe('singleIdea', this.params._id),
+        Meteor.subscribe('singleItem', this.params._id),
         Meteor.subscribe('ideaTasks', this.params._id)
       ];
     },
@@ -45,11 +45,11 @@ Router.map(function() {
     path: '/tasks/:_id',
     waitOn: function() {
       return [
-        // Meteor.subscribe('singleTask', this.params._id)
+        Meteor.subscribe('singleItem', this.params._id)
       ];
     },
     data: function() {
-      // return Tasks.findOne(this.params._id);
+      return Items.findOne(this.params._id);
     }
   });
 });
