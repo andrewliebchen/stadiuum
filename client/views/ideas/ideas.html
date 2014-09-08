@@ -65,7 +65,9 @@
   <div class="panel panel-default">
     <ul class="list-group">
       {{#each task}}
-        {{> taskItem}}
+        <li class="task item list-group-item">
+          {{> taskItem}}
+        </li>
       {{/each}}
     </ul>
   </div>

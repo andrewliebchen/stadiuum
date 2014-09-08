@@ -11,7 +11,7 @@ Meteor.publish('ideaTasks', function(ideaId) {
 });
 
 Meteor.publish('tasks', function() {
-  return Tasks.find({'status.isFinished': null});
+  return Tasks.find({'status.isFinished': null, 'status.inDevelopment': true});
 });
 
 Meteor.publish('singleTask', function(id) {

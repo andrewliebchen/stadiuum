@@ -14,7 +14,7 @@ Template.taskItem.events({
   },
 
   'click .mtr_toggle-loe' : function(event) {
-    var task = Items.findOne(this._id); // Does this get fixed with subscribe?
+    var task = Tasks.findOne(this._id); // Does this get fixed with subscribe?
     var selectedLoe = $(event.target).data('loe');
     var averageLoe = (task.totalLoe + selectedLoe) / (task.loeUpdates + 1)
     Meteor.call('updateLoe', this._id, {
@@ -24,11 +24,19 @@ Template.taskItem.events({
   },
 
   'click .mtr_move-task' : function() {
-    Items.update(this._id, {$set: {isCurrent: !this.isCurrent}});
+    Tasks.update(this._id, {$set: {isCurrent: !this.isCurrent}});
     Meteor.call('updateStateAt', {
       id: this._id,
       updateStateAt: Date.now()
-    })
+    });
+  },
+
+  'click .mtr_move-task_development' : function() {
+    Tasks.update(this._id, {$set: {status: {inDevelopment: true, isNotStarted: true}}});
+    Meteor.call('updateStateAt', {
+      id: this._id,
+      updateStateAt: Date.now()
+    });
   },
 
   'click .mtr_start' : function() {
@@ -42,21 +50,5 @@ Template.taskItem.events({
 
   'click .mtr_finish' : function() {
     Meteor.call('finishTask', this._id);
-  }
-});
-
-Template.newTask.events({
-  'click #mtr_addTask' : function(event, template) {
-    var taskTitle = template.find('#mtr_newTaskTitle');
-    var newTask = {
-      title:      taskTitle.value,
-      time:       Date.now(),
-      parentId:   Session.get('currentIdea')
-    };
-
-    if(taskTitle.value != '') {
-      Meteor.call('addTask', newTask);
-      taskTitle.value = '';
-    }
   }
 });

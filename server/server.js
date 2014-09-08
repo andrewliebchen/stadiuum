@@ -26,7 +26,8 @@ Meteor.methods({
       parentId:   options.parentId,
       isCurrent:  false,
       status: {
-        isNotStarted: true
+        inDevelopment: false,
+        isNotStarted:  false
       }
     });
   },

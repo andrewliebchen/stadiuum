@@ -12,7 +12,8 @@ Meteor.startup(function () {
       isCurrent:  true,
       createdAt:  Date.now(),
       status: {
-        isNotStarted: true
+        inDevelopment: true,
+        isNotStarted:  true
       }
     });
 
@@ -24,7 +25,8 @@ Meteor.startup(function () {
       isCurrent:  false,
       createdAt:  Date.now(),
       status: {
-        isNotStarted: true
+        inDevelopment: true,
+        isNotStarted:  true
       }
     });
 
@@ -36,7 +38,8 @@ Meteor.startup(function () {
       isCurrent:  false,
       createdAt:  Date.now(),
       status: {
-        isNotStarted: true
+        inDevelopment: true,
+        isNotStarted:  true
       }
     });
 
@@ -48,7 +51,8 @@ Meteor.startup(function () {
       isCurrent:  false,
       createdAt:  Date.now(),
       status: {
-        isNotStarted: true
+        inDevelopment: true,
+        isNotStarted:  true
       }
     });
 

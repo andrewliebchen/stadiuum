@@ -78,7 +78,7 @@
 
 <template name="taskActions">
   <div class="item-actions">
-    {{#unless status.isStarted}}
+    {{#if status.inDevelopment}}
       <button type="button" class="btn btn-default btn-sm mtr_move-task">
         {{#if isCurrent}}
           Move to backlog
@@ -86,25 +86,29 @@
           Move to current
         {{/if}}
       </button>
-    {{/unless}}
-    {{#if status.isNotStarted}}
-      <button type="button" class="btn btn-primary btn-sm mtr_start">
-        Start
+      {{#if status.isNotStarted}}
+        <button type="button" class="btn btn-primary btn-sm mtr_start">
+          Start
+        </button>
+      {{/if}}
+      {{#if status.isStarted}}
+        <button type="button" class="btn btn-danger btn-sm mtr_stop">
+          Stop
+        </button>
+        <button type="button" class="btn btn-primary btn-sm mtr_finish">
+          Done
+        </button>
+      {{/if}}
+      {{#if status.isStopped}}
+        {{> restartButton}}
+      {{/if}}
+      {{#if status.isFinished}}
+        {{> restartButton}}
+      {{/if}}
+    {{else}}
+      <button type="button" class="btn btn-success btn-sm mtr_move-task_development">
+        Move to development
       </button>
-    {{/if}}
-    {{#if status.isStarted}}
-      <button type="button" class="btn btn-danger btn-sm mtr_stop">
-        Stop
-      </button>
-      <button type="button" class="btn btn-primary btn-sm mtr_finish">
-        Done
-      </button>
-    {{/if}}
-    {{#if status.isStopped}}
-      {{> restartButton}}
-    {{/if}}
-    {{#if status.isFinished}}
-      {{> restartButton}}
     {{/if}}
   </div>
 </template>
