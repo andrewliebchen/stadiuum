@@ -1,15 +1,19 @@
 Meteor.publish('ideas', function() {
-  return Items.find({type: 'idea'});
+  return Ideas.find({});
 });
 
-Meteor.publish('singleItem', function(id) {
-  return id && Items.find(id);
+Meteor.publish('singleIdea', function(id) {
+  return id && Ideas.find(id);
 });
 
 Meteor.publish('ideaTasks', function(ideaId) {
-  return Items.find({parentId: ideaId, type: 'task'});
+  return Tasks.find({parentId: ideaId});
 });
 
 Meteor.publish('tasks', function() {
-  return Items.find({type: 'task', 'status.isFinished': null});
+  return Tasks.find({'status.isFinished': null});
+});
+
+Meteor.publish('singleTask', function(id) {
+  return id && Tasks.find(id);
 });

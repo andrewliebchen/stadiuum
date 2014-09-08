@@ -8,7 +8,6 @@
     </div>
     <div class="pull-right">
       {{> loginButtons}}
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newTask">New story</button>
     </div>
   </header>
 </template>
@@ -18,6 +17,9 @@
     Ideas
   </a>
   <a href="{{pathFor 'tasks'}}" class="{{ activeClass 'tasks' }}">
-    Tasks
+    Development
+  </a>
+  <a href="{{pathFor 'features'}}" class="{{ activeClass 'features' }}">
+    Features
   </a>
 </template>

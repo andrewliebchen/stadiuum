@@ -1,11 +1,11 @@
 Session.setDefault('addingTask', null);
 
 Template.current.task = function() {
-  return Items.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
+  return Tasks.find({isCurrent: true}, {sort: {'priority': -1, 'updateStateAt': -1}});
 };
 
 Template.backlog.task = function() {
-  return Items.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
+  return Tasks.find({isCurrent: false}, {sort: {'priority': -1, 'createdAt': -1}});
 };
 
 Template.taskItem.events({

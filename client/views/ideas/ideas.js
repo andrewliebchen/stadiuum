@@ -1,10 +1,10 @@
 
 Template.ideas.idea = function() {
-  return Items.find({}, {sort: {'priority': -1}});
+  return Ideas.find({}, {sort: {'priority': -1}});
 };
 
 Template.childTasks.task = function() {
-  return Items.find({type: 'task'});
+  return Ideas.find({type: 'task'});
 }
 
 Template.ideaItem.events({

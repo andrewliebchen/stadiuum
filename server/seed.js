@@ -1,10 +1,10 @@
 Meteor.startup(function () {
-  Items.remove({});
+  Tasks.remove({});
+  Ideas.remove({});
 
-  if(Items.find().count() === 0) {
+  if(Tasks.find().count() === 0) {
     // TASKS
-    Items.insert({
-      type:       'task',
+    Tasks.insert({
       title:      "As a developer, I'd like to add stories to a current section, so that I can know what stories people are working on",
       totalLoe:   0,
       averageLoe: 0,
@@ -16,8 +16,7 @@ Meteor.startup(function () {
       }
     });
 
-    Items.insert({
-      type:       'task',
+    Tasks.insert({
       title:      "As a developer, I'd like to be able to add dividers between stories, so that I can plan sprints however I want",
       totalLoe:   0,
       averageLoe: 0,
@@ -29,8 +28,7 @@ Meteor.startup(function () {
       }
     });
 
-    Items.insert({
-      type:       'task',
+    Tasks.insert({
       title:      "As a developer, I'd like to be able to drag and drop stories to reorder them, so that I can add and remove stories from sections I want",
       totalLoe:   0,
       averageLoe: 0,
@@ -42,8 +40,7 @@ Meteor.startup(function () {
       }
     });
 
-    Items.insert({
-      type:       'task',
+    Tasks.insert({
       title:      "As a developer, I'd like to be able to sort the list of stories in different ways, so I can get different views of my queue",
       totalLoe:   0,
       averageLoe: 0,
@@ -56,22 +53,19 @@ Meteor.startup(function () {
     });
 
     // IDEAS
-    Items.insert({
-      type:        'idea',
+    Ideas.insert({
       title:       'Teams',
       description: 'Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum.',
       createdAt:   Date.now()
     });
 
-    Items.insert({
-      type:        'idea',
+    Ideas.insert({
       title:       'Chat',
       description: 'Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum.',
       createdAt:   Date.now()
     });
 
-    Items.insert({
-      type:        'idea',
+    Ideas.insert({
       title:       'Notes',
       description: 'Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum.',
       createdAt:   Date.now()

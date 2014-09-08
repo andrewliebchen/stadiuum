@@ -10,7 +10,7 @@ Router.map(function() {
       return Meteor.subscribe('ideas');
     },
     data: function() {
-      return Items.find({});
+      return Ideas.find({});
     }
   });
 
@@ -18,13 +18,13 @@ Router.map(function() {
     path: '/ideas/:_id',
     waitOn: function() {
       return [
-        Meteor.subscribe('singleItem', this.params._id),
+        Meteor.subscribe('singleIdea', this.params._id),
         Meteor.subscribe('ideaTasks', this.params._id)
       ];
     },
     data: function() {
       Session.set('currentIdea', this.params._id);
-      return Items.findOne(this.params._id);
+      return Ideas.findOne(this.params._id);
     },
     onStop: function() {
       Session.set('currentIdea', null);
@@ -37,7 +37,7 @@ Router.map(function() {
       return Meteor.subscribe('tasks');
     },
     data: function() {
-      return Items.find({});
+      return Tasks.find({});
     }
   });
 
@@ -45,7 +45,7 @@ Router.map(function() {
     path: '/tasks/:_id',
     waitOn: function() {
       return [
-        Meteor.subscribe('singleItem', this.params._id)
+        Meteor.subscribe('singleTask', this.params._id)
       ];
     },
     data: function() {
